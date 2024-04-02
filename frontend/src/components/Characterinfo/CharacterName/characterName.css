@@ -1,0 +1,28 @@
+.characterName {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  left: -23px;
+  bottom: 6px;
+}
+
+#Character_name {
+  padding-left: 1rem;
+  font-size: 1rem;
+}
+
+.characterName input {
+  padding: 10px;
+  border-radius: 50px 0px 0 50px;
+}
+/* MEDIA-QUERIES SCREEN MAX-WIDTH 1024px */
+@media (min-width: 1024px) {
+}
+
+/* MEDIA-QUERIES SCREEN MAX-WIDTH 347px */
+@media (max-width: 347px) {
+  #Character_name {
+    font-size: 0.8rem;
+  }
+}

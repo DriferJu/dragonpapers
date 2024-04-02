@@ -1,0 +1,50 @@
+.Sheet_smartphone {
+  padding: 3%;
+  background-image: url(../assets/dnd_ico/parchem.png);
+  background-size: auto 101.2%;
+  background-position-x: 60rem;
+  background-position-y: -30px;
+}
+.Sheet_desktop {
+  display: none;
+}
+#snakeDragon {
+  display: none;
+}
+/* MEDIA-QUERIES SCREEN MIN-WIDTH 1024px */
+@media (min-width: 1024px) {
+  .Sheet_smartphone {
+    display: none;
+  }
+  .Sheet_desktop {
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
+    background-image: url(../assets/dnd_ico/parchem.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: 0;
+    background-position-y: 0;
+  }
+  .Desktop_columns_content {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  #DesktopLeftColumn {
+    width: 50%;
+  }
+  #DesktopRightColumn {
+    width: 50%;
+  }
+  .PositionSnakeDragon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  #snakeDragon {
+    display: inline;
+    width: 70%;
+  }
+}

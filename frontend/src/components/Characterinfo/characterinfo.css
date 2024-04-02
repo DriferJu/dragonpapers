@@ -1,0 +1,366 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -1rem;
+  margin-top: 2rem;
+}
+
+.form_inner {
+  margin-top: -5%;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 8%;
+  padding-top: 0%;
+}
+
+.characterName_container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.inputBox {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputBox-px {
+  width: 104%;
+}
+
+label {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-family: "Eagle lake", serif;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+}
+
+input {
+  padding: 10px;
+  background-color: #e8e8e8;
+  border: 1px solid black;
+  width: 88.6%;
+}
+
+.inputBox input {
+  padding: 10px;
+  background-color: #e8e8e8;
+  border: 1px solid black;
+}
+
+select {
+  padding: 10px;
+  width: 100%;
+  background-color: #e8e8e8;
+  border: 1px solid black;
+}
+
+.form_container {
+  border: 1px solid black;
+  width: 100%;
+}
+
+.inputBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.form_inner img {
+  width: 0%;
+}
+
+img.Arrow {
+  display: none;
+}
+#CharacName_top_line {
+  width: 100%;
+  display: flex;
+  margin-bottom: 2rem;
+}
+img.reddragon {
+  position: relative;
+  width: 7rem;
+  height: 7rem;
+  z-index: 1;
+}
+
+.characterName input {
+  padding: 10px;
+  padding-left: 13%;
+}
+
+@media (min-width: 1024px) {
+  #CharacName_top_line {
+    width: 100%;
+    display: flex;
+    margin-bottom: 2rem;
+    align-items: center;
+  }
+  .newCharacter_form {
+    grid-area: 1 / 1 / 2 / 3;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    padding: 0%;
+  }
+  .form_inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0%;
+    margin-top: 0;
+  }
+
+  .form_container {
+    border: 0px;
+    padding: 0%;
+  }
+
+  .newCharacter_form {
+    border: 1px solid black;
+    width: 100%;
+    height: 17rem;
+  }
+  .form_inner img.dragon {
+    width: 15%;
+    height: 13%;
+    order: 4;
+  }
+
+  div.inputBox-class {
+    width: 40%;
+    order: 2;
+  }
+
+  div.inputBox-alignment {
+    width: 40%;
+    order: 5;
+  }
+
+  div.inputBox-race {
+    width: 31.8%;
+    order: 3;
+  }
+
+  div.inputBox-level {
+    width: 15%;
+    order: 1;
+  }
+
+  div.inputBox-px {
+    width: 31.8%;
+    order: 6;
+  }
+
+  div.inputBox-px input {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    font-size: larger;
+    text-align: center;
+  }
+  select {
+    padding: 10px;
+    width: 100%;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    font-size: larger;
+  }
+
+  .characterName_container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-left: -1px;
+    justify-content: flex-start;
+  }
+  .characterName input {
+    border-radius: 25px 0px 0px 50px;
+    height: 3rem;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    font-size: larger;
+  }
+
+  .characterName {
+    width: 79.72%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    margin-left: 0.5rem;
+  }
+
+  img.Arrow {
+    display: block;
+    position: absolute;
+    left: 49%;
+    width: 0.3%;
+    height: 80%;
+    bottom: 9%;
+  }
+
+  .characterName img {
+    position: absolute;
+    width: 40%;
+    left: -27%;
+    bottom: -130%;
+  }
+
+  img.reddragon {
+    position: relative;
+    left: 1%;
+    width: 11rem;
+    height: 11rem;
+    z-index: 1;
+  }
+}
+
+@media print {
+  body {
+    margin: 0%;
+  }
+
+  input {
+    border: 2px solid black;
+    height: 0px;
+  }
+
+  select {
+    border: 2px solid black;
+    height: 24px;
+    padding: 0px;
+  }
+
+  #race-select {
+    width: 110px;
+  }
+
+  font {
+    width: 12px;
+  }
+
+  .newCharacter_form {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    padding: 0%;
+  }
+  .form_inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0%;
+    font-size: 14px;
+  }
+
+  .form_container {
+    border: 0px;
+    padding: 0%;
+  }
+
+  .newCharacter_form {
+    border: 1px solid black;
+    margin-top: 10%;
+    margin-right: 4%;
+    margin-left: 4%;
+    padding-left: 1.5%;
+    padding-right: 1.5%;
+    padding-top: 2%;
+    padding-bottom: 1%;
+    width: 640px;
+  }
+  .form_inner img.dragon {
+    width: 15%;
+    height: 13%;
+    order: 4;
+  }
+
+  div.inputBox-class {
+    width: 40%;
+    order: 2;
+  }
+
+  div.inputBox-alignment {
+    width: 40%;
+    order: 5;
+  }
+
+  div.inputBox-race {
+    width: 31.8%;
+    order: 3;
+  }
+
+  div.inputBox-level {
+    width: 15%;
+    order: 1;
+  }
+
+  div.inputBox-px {
+    width: 31.8%;
+    order: 6;
+  }
+
+  div.inputBox-px input {
+    width: 85%;
+  }
+
+  .characterName input {
+    width: 82%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    padding-left: 11%;
+    border-radius: 15px 0px 0px 15px;
+    margin-right: 2%;
+  }
+
+  .characterName {
+    width: 79.72%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -9%;
+    margin-right: 4%;
+  }
+
+  img.Arrow {
+    display: block;
+    /* position:absolute;
+    left: 49%;
+    width:0.3%;
+    height: 80%;
+    bottom: 9%; */
+  }
+
+  .characterName img {
+    position: absolute;
+    width: 40%;
+    left: -27%;
+    bottom: -130%;
+  }
+
+  img.reddragon {
+    position: absolute;
+    width: 14%;
+    left: 2%;
+    top: 12%;
+  }
+}

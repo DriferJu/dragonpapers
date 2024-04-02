@@ -1,0 +1,122 @@
+#EQUIPMENT {
+  margin-bottom: 2rem;
+}
+#equipment_ico {
+  width: 58px;
+  height: 58px;
+  position: static;
+  margin-left: 82%;
+  margin-bottom: -0.3rem;
+}
+
+#equipment_bloc {
+  border: solid 1px black;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#equipment_title {
+  font-family: "Eagle Lake", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 39px;
+  text-align: center;
+  color: var(--main-font-color);
+  margin: 15px 0 15px 0;
+}
+
+#stuff_area {
+  width: 87.778%;
+  height: 16.375rem;
+  border: solid 1px black;
+  background: var(--input-bg-color);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#stuff_ul {
+  overflow: auto;
+}
+
+#stuff_ul .stuff_item:nth-child(2n) {
+  background-color: rgb(191, 191, 191);
+}
+
+.stuff_item {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  line-height: 24px;
+  padding-left: 10px;
+}
+
+#money_aera {
+  width: 87.778%;
+  border: solid 1px black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 25px;
+}
+#money_aera_print {
+  display: none;
+}
+/* MEDIA-QUERIES SCREEN MIN-WIDTH 1024px */
+@media (min-width: 1024px) {
+  #EQUIPMENT {
+    margin: 2.3%;
+  }
+  #equipment_ico {
+    display: none;
+  }
+  #stuff_area {
+    height: 13.375rem;
+  }
+  .stuff_item {
+    line-height: 27px;
+    padding-left: 30px;
+  }
+  .purse_exchange {
+    display: none;
+  }
+  #money_aera {
+    flex-wrap: nowrap;
+  }
+}
+
+/* MEDIA-QUERIES PRINT */
+@media print {
+  #equipment_ico_ {
+    display: none;
+  }
+  #equipment_bloc {
+    width: 151px;
+    margin-bottom: 8px;
+  }
+  #equipment_title {
+    font-size: 9px;
+    line-height: 0px;
+  }
+  #stuff_area {
+    width: 136px;
+    height: 146.15px;
+  }
+  #stuff_ul {
+    overflow: hidden;
+  }
+  .stuff_item {
+    display: none;
+  }
+  #money_aera {
+    display: none;
+  }
+  #money_aera_print {
+    border: solid 1px black;
+    width: 151px;
+    height: 45px;
+    display: flex;
+  }
+}

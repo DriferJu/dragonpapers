@@ -1,0 +1,156 @@
+.healthDiceBlock {
+  height: 6.875rem;
+  font-family: "Eagle Lake", serif;
+  font-style: normal;
+  font-weight: 400;
+  border: 1px solid #000000;
+  padding: 1% 4% 1% 1%;
+  /* margin-top: 0.5rem; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+.healthDiceBlock img {
+  margin-top: 15px;
+  margin-right: -3px;
+  width: 70px;
+  height: 70px;
+}
+.healthDiceBlock p {
+  color: #000000;
+}
+.healthDice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 60%;
+}
+.healthDiceNumber {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+.healthDiceInput {
+  width: 90%;
+  height: 2.875rem;
+  text-align: center;
+  border: 1px solid #000000;
+  font-family: "Eagle Lake", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.healthDiceNumberInput {
+  width: 90%;
+  height: 2.875rem;
+  text-align: center;
+  border: 1px solid #000000;
+  font-family: "Eagle Lake", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.addRemoveDiceNumber {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  margin: 0 1rem;
+}
+.addRemoveDiceNumber button {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #000000;
+  border-radius: 50%;
+  color: black;
+  cursor: pointer;
+  font-family: "Eagle Lake", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 0px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addRemoveDiceNumber button:first-child {
+  position: absolute;
+  left: -9.5px;
+  top: 23px;
+  background-color: white;
+}
+
+.addRemoveDiceNumber button:last-child {
+  position: absolute;
+  right: -6.8px;
+  top: 23px;
+  background-color: white;
+}
+
+@media (min-width: 1023px) {
+  .healthDiceBlock {
+    height: 7.2rem;
+    width: 40%;
+    padding: 1% 5% 1% 1%;
+    margin-bottom: -6px;
+    margin-top: 0;
+    border: 1px solid #000000;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+  }
+  .healthDiceBlock img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media print {
+  .healthDiceBlock img {
+    width: 36.69px;
+    height: 33.71px;
+  }
+  .Dice {
+    margin-top: 7.5px;
+  }
+  .healthDiceNumber button {
+    display: none;
+  }
+  .healthDiceBlock {
+    width: 175px;
+    height: 35px;
+    padding: 5px;
+  }
+  .healthDiceNumberInput,
+  .healthDiceInput {
+    height: 21px;
+  }
+  .healthDiceNumber input,
+  .healthDiceNumber p,
+  .healthDice input,
+  .healthDice p {
+    font-size: 9px;
+  }
+  .healthDiceNumber {
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+  .healthDice {
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+  .HD_DS_1024 {
+    display: block;
+  }
+}

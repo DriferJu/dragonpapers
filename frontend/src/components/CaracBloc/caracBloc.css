@@ -1,0 +1,77 @@
+#carac_MQ_smartPh {
+  display: flex;
+  justify-content: center;
+}
+#CARACS_screen {
+  border: solid 1px black;
+}
+
+.carac_Bloc {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 1.5rem 0;
+}
+
+#carac_MQ_deskT {
+  display: none;
+}
+
+#CARACS_Print {
+  display: none;
+}
+
+/* MEDIA-QUERIES SCREEN MIN-WIDTH 1024px */
+@media (min-width: 1024px) {
+  #CARACS_screen {
+    border: none;
+  }
+  .carac_Bloc {
+    border: solid 1px black;
+    margin: 2.3%;
+  }
+  #carac_MQ_deskT_position {
+    display: flex;
+    justify-content: center;
+  }
+  #caracs_arrow_line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #carac_MQ_smartPh {
+    display: none;
+  }
+  #carac_MQ_deskT {
+    display: initial;
+    width: 100%;
+  }
+  #caracs_arrow_line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 1rem 0 1rem 0;
+  }
+  #caracs_arrow_line > img {
+    width: 93%;
+    padding: 1rem 0 1rem 0;
+  }
+}
+
+/* MEDIA-QUERIES PRINT */
+@media print {
+  #CARACS_screen {
+    display: none;
+  }
+
+  #CARACS_Print {
+    display: block;
+    width: 216px;
+    height: 677px;
+  }
+
+  .carac_Bloc_Print {
+    border: solid 1px black;
+  }
+}

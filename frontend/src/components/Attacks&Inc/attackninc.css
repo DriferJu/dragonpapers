@@ -1,0 +1,63 @@
+#WEAPONS {
+  margin-bottom: 2.5rem;
+}
+
+.attackNinc {
+  border: 1px solid black;
+  font-family: "Eagle Lake", serif;
+  padding-left: 2.92%;
+  padding-right: 2.92%;
+}
+h1.heading {
+  font-weight: 400;
+  color: black;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 24px;
+  margin-bottom: 1rem;
+}
+.imgesword {
+  width: 20%;
+  margin-left: 82%;
+  margin-bottom: -0.3rem;
+}
+.arrow_line {
+  width: 100%;
+}
+@media screen and (min-width: 1024px) {
+  #WEAPONS {
+    margin: 2.3%;
+  }
+  .attackNinc {
+    border: 1px solid black;
+    width: auto;
+  }
+  h1.heading {
+    font-size: 1.7rem;
+    margin-bottom: 3rem;
+  }
+
+  .arrow_line {
+    display: none;
+  }
+  .imgesword {
+    display: none;
+  }
+}
+
+@media print {
+  .attackNinc {
+    width: 314px;
+    height: 231px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  h1.heading {
+    font-size: 12px;
+    margin-top: 2px;
+  }
+  .imgesword {
+    display: none;
+  }
+}

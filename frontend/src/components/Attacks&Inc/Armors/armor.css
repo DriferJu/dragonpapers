@@ -1,0 +1,270 @@
+.armor {
+  border: 1px solid black;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+  padding: 2.29%;
+}
+.armor_desktop {
+  display: none;
+}
+.armor_bloc_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.armor_bloc_contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.armor_heading {
+  font-size: 1.5rem;
+  color: black;
+}
+.armor_name {
+  width: 100%;
+  height: 2.975rem;
+}
+.armor_name_input {
+  background-color: #e8e8e8;
+  border: 1px solid black;
+  height: 2.8rem;
+  width: 94%;
+}
+.class_strenght_line {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.8rem 0 0.5rem 0;
+}
+.armor_class {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 5rem;
+}
+.armor_class_input {
+  width: 90%;
+  margin-top: 0.5rem;
+  background-color: #e8e8e8;
+  border: 1px solid black;
+  height: 1.4rem;
+}
+
+.armor_strenght {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  height: 5rem;
+}
+
+.armor_strenght_input {
+  width: 90%;
+  margin-top: 0.5rem;
+  background-color: #e8e8e8;
+  border: 1px solid black;
+  height: 1.4rem;
+}
+
+.armor_sub_heading {
+  align-self: center;
+}
+
+.armor_disadvantages {
+  width: 94%;
+  display: flex;
+  flex-direction: column;
+}
+
+.armor_disadvantage_input {
+  width: 100%;
+  margin-top: 0.5rem;
+  background-color: #e8e8e8;
+  border: 1px solid black;
+  height: 1.4rem;
+}
+.armor_sub_heading {
+  text-align: center;
+  color: black;
+  font-size: 14px;
+}
+.armor_name_heading {
+  color: black;
+}
+.fleche_closed {
+  width: 25px;
+  height: 45px;
+  transform: rotate(180deg);
+}
+.fleche_open {
+  width: 25px;
+  height: 45px;
+  transform: rotate(-90deg);
+}
+.armor_print {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .armor_print {
+    display: none;
+  }
+  .armor {
+    display: none;
+  }
+  .armor_desktop {
+    border: 1px solid black;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+    padding: 2.29%;
+    display: flex;
+    flex-direction: column;
+  }
+  .fleche {
+    width: 9%;
+  }
+
+  .armor_bloc_contents_desktop {
+    margin-bottom: 1rem;
+  }
+  .armor_Line1 {
+    display: flex;
+    align-items: flex-end;
+  }
+  .armor_Line2 {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  .armor_name_desktop {
+    width: 50%;
+  }
+  .armor_name_input_desktop {
+    height: 2.4rem;
+    margin-top: 10px;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    font-size: medium;
+  }
+  .armor_class_desktop {
+    width: 50%;
+  }
+  .armor_class_input_desktop {
+    height: 1.5rem;
+    margin-top: 10px;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    font-size: medium;
+  }
+
+  .armor_disadvantages_desktop {
+    width: 50%;
+  }
+
+  .armor_disadvantage_input_desktop {
+    height: 1.5rem;
+    margin-top: 10px;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    font-size: medium;
+  }
+  .armor_strenght_desktop {
+    width: 50%;
+  }
+
+  .armor_strenght_input_desktop {
+    height: 1.5rem;
+    margin-top: 10px;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    font-size: medium;
+  }
+}
+
+@media print {
+  .armor_print {
+    border: 1px solid black;
+    width: 298px;
+    height: 83px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 0.5px;
+
+    justify-content: center;
+  }
+  h1.armor_heading {
+    margin-top: 25px;
+  }
+  .armor {
+    display: none;
+  }
+  .fleche {
+    display: none;
+  }
+  .armor_bloc_one {
+    display: flex;
+    height: 5px;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 46%;
+    align-items: center;
+  }
+  .armor_bloc_sec {
+    display: flex;
+    margin-top: -20px;
+    justify-content: space-between;
+    width: 90%;
+  }
+  .armor_name {
+    width: 136px;
+    height: 16px;
+    margin: 0;
+  }
+  .armor_name_input {
+    width: 100%;
+    height: 100%;
+  }
+  .armor_class {
+    display: flex;
+    flex-direction: row;
+    width: 89px;
+    height: 16px;
+    margin-top: 7px;
+    justify-content: space-between;
+  }
+  .armor_class_input {
+    width: 62px;
+    height: 100%;
+  }
+  .armor_strenght {
+    width: 93px;
+    height: 20px;
+    order: 2;
+  }
+  .armor_strenght_input {
+    width: 100%;
+    height: 100%;
+  }
+  .armor_disadvantages {
+    width: 160px;
+    height: 20px;
+    order: 1;
+  }
+  .armor_disadvantage_input {
+    width: 100%;
+  }
+
+  .armor_heading {
+    font-size: 10px;
+  }
+  .armor_sub_heading {
+    font-size: 10px;
+  }
+}

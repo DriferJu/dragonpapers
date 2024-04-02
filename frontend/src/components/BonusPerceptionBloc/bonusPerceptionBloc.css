@@ -1,0 +1,98 @@
+#BONUS_PERCEPTION {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 0 1rem 0;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.joust {
+  width: 60%;
+}
+
+#joustDn {
+  transform: scaleX(-1);
+}
+.BP {
+  display: flex;
+  align-items: center;
+  width: 94%;
+}
+
+.inputBP {
+  width: 20%;
+  height: 46px;
+  border-radius: 0 0 0 25%;
+  background: var(--input-bg-color);
+  padding: 0 10px 0 10px;
+  font-family: "Eagle Lake", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  text-align: center;
+  color: var(--main-font-color);
+}
+#inputPP {
+  width: 20%;
+  height: 46px;
+  border-radius: 0 0 25% 0;
+  background: var(--input-bg-color);
+}
+
+.BP_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 46px;
+  border: solid 1px black;
+}
+.BP_item {
+  font-family: "Eagle Lake", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 39px;
+  text-align: center;
+  color: var(--main-font-color);
+  margin: 15px 0 15px 0;
+}
+#BONUS_PERCEPTION_DESKTOP {
+  display: none;
+}
+
+/* MEDIA-QUERIES SCREEN MIN-WIDTH 1024px */
+@media (min-width: 1024px) {
+  #BONUS_PERCEPTION {
+    display: none;
+  }
+  #BONUS_PERCEPTION_DESKTOP {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0 1rem 0;
+  }
+  .BPD_line1 {
+    display: flex;
+  }
+  .BPD_line2 {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .knife_Ico {
+    height: 9rem;
+    margin: 0 1rem;
+  }
+  #inspiration {
+    width: 50%;
+  }
+  .Dragon_ico {
+    width: 13%;
+    padding: 0 20px;
+  }
+  #Dragon_left {
+    transform: scaleX(-1);
+  }
+}

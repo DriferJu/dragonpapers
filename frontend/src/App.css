@@ -1,0 +1,18 @@
+#root {
+  overflow-x: hidden;
+}
+/* MEDIA-QUERIES PRINT */
+@media print {
+  /* body {
+    margin: 0;
+  }
+  .attackNinc {
+    margin-top: 200px;
+  } */
+}
+@media (min-width: 1023px) {
+  .result {
+    display: flex;
+    gap: 0.49%;
+  }
+}

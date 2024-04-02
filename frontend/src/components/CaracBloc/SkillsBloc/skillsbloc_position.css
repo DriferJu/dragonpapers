@@ -1,0 +1,42 @@
+/*/////////////////////
+// MEDIAS-QUIERIES ///
+///////////////////*/
+
+/* MEDIA-QUIERIES PRINT ------------------------- */
+@media print {
+  .skill_bloc {
+    top: 59px;
+    left: 91px;
+    width: 0;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0);
+  }
+  #strength {
+    display: block;
+    top: 37px;
+    left: 70px;
+  }
+  #dexterity {
+    display: block;
+    top: 153px;
+    left: 70px;
+  }
+
+  #intelligence {
+    display: block;
+    top: 560px;
+    left: 70px;
+  }
+
+  #wisdom {
+    display: block;
+    top: 422px;
+    left: 70px;
+  }
+
+  #charisma {
+    display: block;
+    top: 701px;
+    left: 70px;
+  }
+}

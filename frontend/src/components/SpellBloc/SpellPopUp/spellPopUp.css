@@ -1,0 +1,92 @@
+.open_spell_popup {
+  width: 15px;
+  height: 15px;
+  padding: 3px;
+}
+
+#spells_PopUp {
+  width: auto;
+  height: auto;
+}
+
+.spell_bloc_bkg {
+  width: fit-content;
+  height: fit-content;
+  background: url(../../../assets/dnd_ico/parchem.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.spell_pop_up_content {
+  padding: 2rem;
+}
+.spell_item_title {
+  font-family: "Eagle Lake", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 39px;
+  color: var(--main-font-color);
+}
+
+.spell_item_infos {
+  font-family: "Eagle Lake", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 39px;
+  color: var(--main-font-color);
+}
+.spell_item_italic {
+  font-style: italic;
+}
+.item_infos_damage {
+  padding-left: 10px;
+  font-style: italic;
+}
+
+.spell_item_desc {
+  font-family: "Eagle Lake", serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 30px;
+  color: var(--main-font-color);
+  font-style: italic;
+}
+
+.MagicWand_ico {
+  width: 10rem;
+  margin: 1rem 0;
+}
+#MagicWand_ico_down {
+  display: flex;
+  transform: scaleX(-1);
+}
+.closed_cross {
+  display: flex;
+  justify-content: center;
+}
+.sword_cross {
+  width: 30px;
+  height: 30px;
+  border: solid 1px;
+  border-radius: 100%;
+  padding: 10px;
+  background-color: #ffffff;
+  margin-bottom: 10px;
+}
+/*/////////////////////
+// MEDIAS-QUIERIES ///
+///////////////////*/
+
+/* MEDIA-QUERIES SCREEN MIN-WIDTH 1024px */
+
+@media (min-width: 1024px) {
+  .spell_pop_up_content {
+    padding: 5rem;
+  }
+  .MagicWand_ico {
+    width: 10rem;
+    margin: 1.5rem 0;
+  }
+}

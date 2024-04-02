@@ -1,0 +1,206 @@
+.skill_bloc {
+  width: auto;
+  height: auto;
+}
+.skill_bloc_bkg {
+  width: 315px;
+  height: 395px;
+  background: url(../../../assets/dnd_ico/parchem.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* --- [TOP] ------------------------------------------- */
+.sword_cross_position {
+  display: flex;
+  justify-content: center;
+}
+.sword_cross {
+  width: 30px;
+  height: 30px;
+  border: solid 1px;
+  border-radius: 100%;
+  padding: 10px;
+  background-color: #ffffff;
+  margin-bottom: 10px;
+}
+
+/* --- [CONTENT] ------------------------------------------- */
+.skills_content {
+  margin-top: 10px;
+}
+
+/* --- [CARAC SKILLS TITLE] ------------------------------------------- */
+.skill_bloc_title {
+  font-family: "Eagle Lake";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: var(--main-font-color);
+  padding-left: 22px;
+  padding-top: 35px;
+}
+/* --- [SKILL LINE] ------------------------------------------- */
+.skill_lines {
+  padding-left: 18px;
+  margin-top: 10px;
+}
+.skill_line {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.checkbox_label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-family: "Eagle lake", serif;
+  font-size: 16px;
+  color: #333;
+}
+
+.custom_checkbox {
+  margin-right: 10px;
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+.value_imput {
+  width: 45px;
+  height: 40px;
+}
+.skill_value {
+  font-family: "Eagle Lake";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 33px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--main-font-color);
+}
+.skill_name {
+  margin: 10px 0 12px 10px;
+  font-family: "Eagle Lake";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 33px;
+  display: flex;
+  align-items: center;
+  color: var(--main-font-color);
+}
+
+/*/////////////////////
+// MEDIAS-QUIERIES ///
+///////////////////*/
+
+/* MEDIA-QUERIES SCREEN MIN-WIDTH 1024px */
+
+@media (min-width: 1024px) {
+  .skill_bloc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .skill_bloc_bkg {
+    width: 27rem;
+    height: 38rem;
+  }
+  .skills_content {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .skill_bloc_title {
+    font-size: 24px;
+    line-height: 50px;
+    padding-left: 0;
+  }
+  .skill_lines {
+    width: 100%;
+    padding-left: 70px;
+    margin-top: 29px;
+  }
+  .skill_line {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+/* MEDIA-QUIERIES PRINT ------------------------- */
+@media print {
+  .skill_bloc {
+    width: 315px;
+    height: 475px;
+  }
+  .skill_bloc_bkg {
+    height: 54px;
+    background: none;
+  }
+  .sword_cross_position {
+    display: none;
+  }
+  .skill_bloc_title {
+    display: none;
+  }
+
+  .carac_num_container {
+    width: 21px;
+    height: 16px;
+  }
+  .carac_num {
+    font-size: 10px;
+    line-height: 39px;
+  }
+  .radio_btn {
+    width: 8px;
+    height: 8px;
+  }
+  .value_imput {
+    width: 15px;
+    height: 13px;
+  }
+  .carac_main_content {
+    width: 57px;
+  }
+  .carac_title {
+    font-size: 10px;
+    margin: 10px 0 10px 0;
+  }
+  .carac_bonus_content {
+    width: 40px;
+    height: 18px;
+    margin-bottom: 10px;
+  }
+  .carac_bonus {
+    font-size: 10px;
+  }
+
+  .skill_lines {
+    padding-left: 0px;
+    margin-top: 0px;
+  }
+  .skill_line {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 21px;
+  }
+  .skill_value {
+    font-size: 8px;
+    line-height: 12px;
+  }
+  .skill_name {
+    margin: 10px 0 12px 10px;
+    font-size: 8px;
+    line-height: 1px;
+  }
+}

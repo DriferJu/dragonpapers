@@ -1,0 +1,292 @@
+.deathSaveComponent .knightLogo {
+  width: 72px;
+  height: 72px;
+  display: block;
+  /*Sans les positions absolue*/
+  /* margin: 0 0px -0.9rem 74%;*/
+  position: static;
+  margin-left: 78%;
+  margin-bottom: -0.3rem;
+}
+
+.deathSaveRoll {
+  font-family: "Eagle Lake", serif;
+  font-style: normal;
+  font-weight: 400;
+  border: 1px solid #000000;
+  padding: 3%;
+  height: 28.625rem;
+  width: 94%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.deathSaveRoll p {
+  color: black;
+  font-size: 1.5rem;
+}
+
+.successBloc p {
+  color: #22a50b;
+}
+.failBloc p {
+  color: #ec2127;
+}
+.deathSaveText {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #000000;
+}
+
+.skullImage {
+  width: 60px;
+  height: 60px;
+}
+.deathImage {
+  width: 80px;
+  height: 80px;
+}
+
+.checkBoxesSuccess,
+.checkBoxesFail {
+  text-align: center;
+}
+.successBloc p {
+  text-align: center;
+}
+.failBloc p {
+  text-align: center;
+}
+/*.checkbox-label input {
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    background: #989898;
+    border: 2px solid #000;
+  } */
+.checkbox-label {
+  display: inline-block;
+  margin: 0.625rem;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+
+  background: #989898;
+  border: 2px solid #000;
+  line-height: 60px;
+  vertical-align: top;
+  position: relative;
+}
+
+.custom-checkbox {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border: 2px solid black;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  vertical-align: middle;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.checkbox-label input {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.checkbox-label .input-success:checked + .custom-checkbox {
+  background: #22a50b;
+}
+
+.checkbox-label .input-success:checked + .custom-checkbox::before {
+  content: "\2713";
+  font-size: 1.875rem;
+  color: #fff;
+}
+
+.checkbox-label .input-fail:checked + .custom-checkbox {
+  background: #ec2127;
+}
+
+.checkbox-label .input-fail:checked + .custom-checkbox::before {
+  content: "\2717";
+  font-size: 1.875rem;
+  color: #fff;
+}
+
+@media (min-width: 1023px) {
+  .combatComponent .knightLogo {
+    display: none;
+  }
+  .deathSaveComponent {
+    margin-top: 0.8rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 60%;
+  }
+  .deathSaveRoll {
+    width: 100%;
+    height: 7.8rem;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    padding: 1%;
+    gap: 1%;
+  }
+  .deathSaveRoll p {
+    font-size: 1.1rem;
+  }
+  .allCheckbox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .successBloc {
+    gap: 1rem;
+    margin-right: 0.5rem;
+  }
+
+  .deathSaveText {
+    font-size: 1.2rem;
+    margin-right: 3rem;
+    white-space: nowrap;
+  }
+  .checkbox-label {
+    display: inline-block;
+    cursor: pointer;
+    width: 26px;
+    height: 26px;
+    margin: 10px;
+    background: #989898;
+    border: 2px solid #000;
+    line-height: 20px;
+    vertical-align: top;
+    display: flex;
+    justify-content: center;
+  }
+  .checkBoxesSuccess,
+  .checkBoxesFail {
+    display: flex;
+    flex-direction: row;
+  }
+  .custom-checkbox {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 2px solid black;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    vertical-align: middle;
+    transition: all 0.3s;
+    overflow: hidden;
+  }
+
+  .checkbox-label input {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  .checkbox-label .input-success:checked + .custom-checkbox::before {
+    font-size: 1.5rem;
+  }
+  .checkbox-label .input-fail:checked + .custom-checkbox::before {
+    font-size: 1.3rem;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1200px) {
+  .skullImage {
+    display: none;
+  }
+  .deathImage {
+    display: none;
+  }
+  .deathSaveText {
+    margin-right: 0;
+  }
+}
+@media print {
+  .deathSaveComponent .knightLogo {
+    display: none;
+  }
+  .skullImage {
+    display: none;
+  }
+  .deathImage {
+    display: none;
+  }
+  .combatStats .HD_DS_1024 {
+    display: flex;
+    flex-direction: row;
+    justify-content: initial;
+    gap: 10px;
+  }
+  .deathSaveComponent {
+    width: 121px;
+    height: 43px;
+  }
+  .allCheckbox {
+    width: 40px;
+    height: 33px;
+    gap: 30px;
+  }
+  .deathSaveRoll {
+    width: 100%;
+    height: 100%;
+  }
+  .checkBoxesSuccess,
+  .checkBoxesFail {
+    width: 100%;
+    gap: 2px;
+  }
+
+  .successBloc,
+  .failBloc {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .checkbox-label {
+    margin: 0;
+    width: 11px;
+    height: 11px;
+    margin: 0;
+    gap: 1px;
+    line-height: 10px;
+    vertical-align: top;
+    display: flex;
+    justify-content: center;
+  }
+  .custom-checkbox {
+    width: 8px;
+    height: 8px;
+  }
+  .checkbox-label input {
+    width: 8px;
+    height: 8px;
+  }
+  .successBloc p,
+  .failBloc p {
+    font-size: 8px;
+    color: #000;
+  }
+  .deathSaveRoll h1 {
+    font-size: 9px;
+  }
+}

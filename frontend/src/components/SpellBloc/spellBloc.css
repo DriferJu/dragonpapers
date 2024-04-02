@@ -1,0 +1,159 @@
+#SPELLS {
+  margin-bottom: 2rem;
+}
+#wizard_ico {
+  width: 58px;
+  height: 58px;
+  position: static;
+  margin-left: 82%;
+  margin-bottom: -0.3rem;
+}
+#wizard_ico_print {
+  display: none;
+}
+.spells_bloc {
+  height: auto;
+  border: solid 1px black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.spells_bloc_title {
+  font-family: "Eagle Lake", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 39px;
+  text-align: center;
+  color: var(--main-font-color);
+  margin: 0.5rem;
+}
+#spell_area_screen {
+  display: flex;
+  width: 94%;
+  padding-bottom: 0.8rem;
+  margin-bottom: 1rem;
+  gap: 1rem;
+  flex-direction: column;
+}
+#spell_area_print {
+  display: none;
+}
+.spells_lvls {
+  border: solid 1px black;
+  padding-bottom: 1rem;
+}
+.spell_bloc_top_line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+.spell_lvl_title {
+  font-family: "Eagle Lake", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 39px;
+  text-align: center;
+  color: var(--main-font-color);
+}
+.arrow_btn_open {
+  width: 25px;
+  height: 45px;
+  transform: rotate(-90deg);
+}
+.arrow_btn_closed {
+  width: 25px;
+  height: 45px;
+  transform: rotate(-180deg);
+}
+.spell {
+  display: flex;
+  justify-content: center;
+}
+.spell_container {
+  background: var(--input-bg-color);
+  border: solid 1px black;
+  width: 100%;
+  margin: 0 11px 10px 11px;
+}
+.spells_list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+  column-gap: 4px;
+}
+.spell_item {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: medium;
+  padding-left: 10px;
+  color: var(--main-font-color);
+  width: 87%;
+}
+
+/* MEDIA-QUERIES SCREEN MIN-WIDTH 1024px */
+@media (min-width: 1024px) {
+  #SPELLS {
+    margin: 2.3%;
+  }
+  #wizard_ico {
+    display: none;
+  }
+
+  .spells_bloc {
+    width: 100%;
+  }
+  .spell_item {
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    font-size: larger;
+    width: 91%;
+  }
+  .open_spell_popup {
+    width: 30px;
+    height: 30px;
+    padding: 7px;
+  }
+}
+/* MEDIA-QUERIES PRINT */
+
+@media print {
+  #wizard_ico {
+    display: none;
+  }
+  #wizard_ico_print {
+    display: block;
+    width: 58px;
+    height: 58px;
+  }
+  .spells_bloc {
+    width: 151px;
+    height: 253px;
+  }
+  .spell_bloc_top_line {
+    justify-content: center;
+  }
+  .spells_bloc_title {
+    font-size: 9px;
+    line-height: 0px;
+    margin: 15px 0 15px 0;
+  }
+  .arrow_btn_open {
+    display: none;
+  }
+  #spell_area_screen {
+    display: none;
+  }
+  #spell_area_print {
+    display: flex;
+    width: 140px;
+    height: 172px;
+    border: solid 1px black;
+    background: var(--input-bg-color);
+    margin-bottom: 10px;
+  }
+}
