@@ -12,7 +12,20 @@ header * {
   height: 50px;
   padding: 1em;
 }
-
+.NavLogo {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  gap: 3px;
+  cursor: pointer;
+}
+.NavDragonLogo {
+  width: 30px;
+}
+.NavTitle {
+  font-family: var(--font--01);
+  color: var(--input-bg-color);
+}
 .menu {
   display: flex;
   flex-direction: row;
@@ -24,6 +37,12 @@ header * {
 .menu > li {
   margin: 0 1rem;
   overflow: hidden;
+  font-family: var(--font--01);
+  cursor: pointer;
+}
+
+.menu > li:hover {
+  color: var(--red-dragon);
 }
 
 .menu-button-container {
@@ -80,6 +99,11 @@ header * {
   .menu-button-container {
     display: flex;
   }
+
+  .NavLogo {
+    padding-left: 0;
+  }
+
   .menu {
     position: absolute;
     top: 0;
