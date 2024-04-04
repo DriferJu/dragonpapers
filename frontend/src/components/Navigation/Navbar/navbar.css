@@ -42,7 +42,7 @@ header * {
 }
 
 .menu > li:hover {
-  color: rgb(202, 202, 202);
+  color: var(--red-dragon);
 }
 
 .logico {
@@ -50,7 +50,7 @@ header * {
 }
 
 .logico:hover {
-  color: rgb(202, 202, 202);
+  color: var(--red-dragon);
 }
 
 .menu-button-container {

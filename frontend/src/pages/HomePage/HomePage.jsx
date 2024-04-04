@@ -25,41 +25,53 @@ function HomePage() {
             <div className="red-barre"> </div>
           </div>
           {isLogin && (
-            <div className="scrollpaper_container">
-              <div className="scrollpaper_contents">
-                <div className="HP_input_container">
-                  <h2>Login</h2>
-                  <input
-                    type="text"
-                    name="text"
-                    placeholder="enter your login"
-                  />
-                </div>
-                <div className="HP_input_container">
-                  <h2>password</h2>
-                  <input
-                    type="password"
-                    name="text"
-                    placeholder="enter your password"
-                  />
-                </div>
-                <button type="submit" className="HP_button">
-                  VALIDATE
-                </button>
-                <div className="log_options_line">
-                  <p className="HP_log_options_active">log-in</p>
-                  <p>|</p>
-                  <p
-                    className="HP_log_options"
-                    onClick={() => {
-                      handleRegister();
-                    }}
-                  >
-                    register
-                  </p>
+            <>
+              <div className="scrollpaper_container">
+                <div className="scrollpaper_contents">
+                  <div className="HP_input_container">
+                    <h2>Login</h2>
+                    <input
+                      type="text"
+                      name="text"
+                      placeholder="enter your login"
+                    />
+                  </div>
+                  <div className="HP_input_container">
+                    <h2>Password</h2>
+                    <input
+                      type="password"
+                      name="text"
+                      placeholder="enter your password"
+                    />
+                  </div>
+                  <button type="submit" className="HP_button">
+                    VALIDATE
+                  </button>
+                  <div className="log_options_line">
+                    <p className="HP_log_options_active">log-in</p>
+                    <p>|</p>
+                    <p
+                      className="HP_log_options"
+                      onClick={() => {
+                        handleRegister();
+                      }}
+                    >
+                      register
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+              <div className="HP_introtext_container">
+                <p className="HP_intro_text">
+                  Create your charactersheets and find ressources to roleplay
+                </p>
+                <img
+                  className="HP_DDlogo"
+                  src={DnD}
+                  alt="Donjon & Dragon Logo"
+                />
+              </div>
+            </>
           )}
           {!isLogin && (
             <div className="scrollpaper_container_register">
@@ -127,13 +139,6 @@ function HomePage() {
               </div>
             </div>
           )}
-
-          <div className="HP_introtext_container">
-            <p className="HP_intro_text">
-              Create your charactersheets and find ressources to roleplay
-            </p>
-            <img className="HP_DDlogo" src={DnD} alt="Donjon & Dragon Logo" />
-          </div>
         </div>
       </section>
       <section className="HP-col2" />

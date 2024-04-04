@@ -1,8 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
 import "./navbar.css";
-import LoginIcon from "@mui/icons-material/Login";
-import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import DragonLogo from "../../../assets/dnd_ico/dragon_red.png";
 
 function Navbar() {
@@ -31,11 +28,11 @@ function Navbar() {
         <li onClick={() => handleNavigation("/charactersheet")}>
           CREATE CHARACTER SHEET
         </li>
-        <li onClick={() => handleNavigation("/")}>
-          <LoginIcon className="logico" />
+        <li className="logico" onClick={() => handleNavigation("/")}>
+          LOG-IN
         </li>
-        <li onClick={() => handleNavigation("/")}>
-          <PersonAddAltIcon className="logico" />
+        <li className="logico" onClick={() => handleNavigation("/")}>
+          REGISTER
         </li>
       </ul>
     </section>
