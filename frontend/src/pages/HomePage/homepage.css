@@ -47,8 +47,14 @@
   margin: 6px;
   text-align: center;
 }
-.scrollpaper_container {
+.scrollpaper_container{
   background-image: url(../../assets/dnd_ico/scrollpaper-22.png);
+}
+.scrollpaper_container_register{
+  background-image: url(../../assets/dnd_ico/scrollpaper-33.png);
+}
+.scrollpaper_container,
+.scrollpaper_container_register {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -60,13 +66,20 @@
   justify-content: center;
 }
 
-.scrollpaper_contents {
+.scrollpaper_contents,
+.scrollpaper_contents_register {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  
+}
+.scrollpaper_contents{
   margin: 5rem 0;
+}
+.scrollpaper_contents_register{
+  margin: 3rem 0;
 }
 .HP_input_container {
   display: flex;
@@ -108,7 +121,11 @@
   font-size: small;
 }
 .HP_log_options:hover {
-  color: red;
+  font-weight: bolder;
+}
+.HP_log_options_active{
+  font-weight: bolder;
+  color: red !important;
 }
 .dragon_icone {
   width: 55px;
@@ -164,6 +181,7 @@
     background-image: url(../../assets/dnd_ico/background_bkj.jpg);
     background-repeat: no-repeat;
     width: 100%;
+    min-height: calc(100vh - 142px);
   }
   .HP-col1 {
     width: 50%;

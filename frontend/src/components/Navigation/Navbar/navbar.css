@@ -28,6 +28,7 @@ header * {
 .menu {
   display: flex;
   flex-direction: row;
+  align-items: center;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -41,7 +42,7 @@ header * {
 }
 
 .menu > li:hover {
-  color: var(--red-dragon);
+  color: rgb(202, 202, 202);
 }
 
 .logico {
@@ -49,7 +50,7 @@ header * {
 }
 
 .logico:hover {
-  color: green;
+  color: rgb(202, 202, 202);
 }
 
 .menu-button-container {
