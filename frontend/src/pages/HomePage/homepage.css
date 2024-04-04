@@ -215,6 +215,10 @@
   .scrollpaper_contents {
     margin: 5rem 0;
   }
+  .HP_introtext_container {
+
+    width: 70%;
+  }
   .HP_DDlogo{
 width: 50%;
   }

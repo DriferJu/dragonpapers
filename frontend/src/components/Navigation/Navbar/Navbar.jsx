@@ -29,10 +29,12 @@ function Navbar() {
           CREATE CHARACTER SHEET
         </li>
         <li className="logico" onClick={() => handleNavigation("/")}>
-          LOG-IN
+          <span style={{ color: "red" }}>ᛁ</span> LOGIN{" "}
+          <span style={{ color: "red" }}>ᛁ</span>
         </li>
         <li className="logico" onClick={() => handleNavigation("/")}>
-          REGISTER
+          <span style={{ color: "red" }}>ᛁ</span> REGISTER{" "}
+          <span style={{ color: "red" }}>ᛁ</span>
         </li>
       </ul>
     </section>

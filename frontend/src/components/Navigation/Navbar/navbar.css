@@ -45,10 +45,6 @@ header * {
   color: var(--red-dragon);
 }
 
-.logico {
-  color: red;
-}
-
 .logico:hover {
   color: var(--red-dragon);
 }

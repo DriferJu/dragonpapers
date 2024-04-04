@@ -48,7 +48,7 @@ function HomePage() {
                     VALIDATE
                   </button>
                   <div className="log_options_line">
-                    <p className="HP_log_options_active">log-in</p>
+                    <p className="HP_log_options_active">login</p>
                     <p>|</p>
                     <p
                       className="HP_log_options"
@@ -63,7 +63,7 @@ function HomePage() {
               </div>
               <div className="HP_introtext_container">
                 <p className="HP_intro_text">
-                  Create your charactersheets and find ressources to roleplay
+                  Create your charactersheets to roleplay
                 </p>
                 <img
                   className="HP_DDlogo"
@@ -131,7 +131,7 @@ function HomePage() {
                       handleLogin();
                     }}
                   >
-                    log-in
+                    login
                   </p>
                   <p>|</p>
                   <p className="HP_log_options_active">register</p>
