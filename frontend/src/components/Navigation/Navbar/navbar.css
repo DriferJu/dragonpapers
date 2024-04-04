@@ -44,6 +44,14 @@ header * {
   color: var(--red-dragon);
 }
 
+.logico {
+  color: red;
+}
+
+.logico:hover {
+  color: green;
+}
+
 .menu-button-container {
   display: none;
   height: 100%;

@@ -8,9 +8,9 @@
     "Lucida Sans", Arial, sans-serif;
 }
 
-body{
+/* body{
     margin-bottom: 50px;
-}
+} */
 
 body::-webkit-scrollbar {
   display: none;
