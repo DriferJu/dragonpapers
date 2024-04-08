@@ -1,14 +1,15 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Homepage from "./pages/HomePage/HomePage";
-import CharacterSheet from "./pages/CharacterSheet";
+/* eslint-disable import/extensions */
+import { Outlet } from "react-router-dom";
+import Header from "./components/Navigation/Header/Header";
+import Footer from "./components/Navigation/Footer/Footer";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Homepage />} />
-      <Route path="/charactersheet" element={<CharacterSheet />} />
-    </Routes>
+    <main>
+      <Header />
+      <Outlet />
+      <Footer />
+    </main>
   );
 }
 

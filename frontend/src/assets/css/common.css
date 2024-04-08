@@ -1,0 +1,18 @@
+:root {
+  --input-bg-color: #e8e8e8;
+  --main-font-color: #000000;
+  --red-dragon: rgb(251, 76, 76);
+
+  --font--01: "Eagle Lake", serif;
+  --font--02: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+/* body{
+    margin-bottom: 50px;
+} */
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
