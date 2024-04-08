@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-
 import "./navbar.css";
 import DragonLogo from "../../../assets/dnd_ico/dragon_red.png";
 
@@ -27,7 +26,15 @@ function Navbar() {
       </label>
       <ul className="menu">
         <li onClick={() => handleNavigation("/charactersheet")}>
-          CHARACTER SHEET
+          CREATE CHARACTER SHEET
+        </li>
+        <li className="logico" onClick={() => handleNavigation("/")}>
+          <span style={{ color: "red" }}>ᛁ</span> LOGIN{" "}
+          <span style={{ color: "red" }}>ᛁ</span>
+        </li>
+        <li className="logico" onClick={() => handleNavigation("/")}>
+          <span style={{ color: "red" }}>ᛁ</span> REGISTER{" "}
+          <span style={{ color: "red" }}>ᛁ</span>
         </li>
       </ul>
     </section>
