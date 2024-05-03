@@ -31,7 +31,7 @@
 .spell_item_title {
   font-family: "Eagle Lake", serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 20px;
   line-height: 39px;
   color: var(--main-font-color);
@@ -45,12 +45,15 @@
   line-height: 39px;
   color: var(--main-font-color);
 }
-.spell_item_italic {
-  font-style: italic;
+.spell_item_bold {
+  font-weight: bold;
 }
+/* .spell_item_italic {
+  font-style: italic;
+} */
 .item_infos_damage {
   padding-left: 10px;
-  font-style: italic;
+  /* font-style: italic; */
 }
 
 .spell_item_desc {
@@ -60,7 +63,7 @@
   font-size: 14px;
   line-height: 30px;
   color: var(--main-font-color);
-  font-style: italic;
+  /* font-style: italic; */
 }
 
 .MagicWand_ico {

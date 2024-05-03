@@ -22,32 +22,33 @@ function SpellPopUp(props) {
           <h2 className="spell_item_title">{name}</h2>
           <img src={MagicWand} alt="Magic wand" className="MagicWand_ico" />
           <p className="spell_item_infos">
-            &diams; Range :<span className="spell_item_italic"> {range}</span>
+            &diams; <span className="spell_item_bold">Range :{" "}</span><span className="spell_item_italic"> {range}</span>
           </p>
+          {components && (
           <p className="spell_item_infos">
-            &diams; Components :{" "}
+            &diams; <span className="spell_item_bold">Components :{" "}</span>
             <span className="spell_item_italic">
               {Array.isArray(components) && components.join(", ")}
             </span>
-          </p>
+          </p>)}
           <p className="spell_item_infos">
-            &diams; Casting time :{" "}
+            &diams; <span className="spell_item_bold">Casting time :{" "}</span>
             <span className="spell_item_italic">{castingTime}</span>
           </p>
           <p className="spell_item_infos">
-            &diams; Duration :{" "}
+            &diams; <span className="spell_item_bold">Duration :{" "}</span>
             <span className="spell_item_italic">{duration}</span>
           </p>
           {damage && (
             <p className="spell_item_infos">
-              &diams; Damage :{" "}
+              &diams; <span className="spell_item_bold">Damage :{" "}</span>
               <span className="spell_item_italic">{damage}</span>
             </p>
           )}
           {damageSlot && (
             <>
               <p className="spell_item_infos">
-                &diams; Damage at characther level:
+                &diams; <span className="spell_item_bold">Damage at characther level:{" "}</span>
               </p>
               {Object.keys(damageSlot).map((key) => {
                 return (
@@ -61,7 +62,7 @@ function SpellPopUp(props) {
           {damagecharacLevel && (
             <>
               <p className="spell_item_infos">
-                &diams; Damage at characther level:
+                &diams; <span className="spell_item_bold">Damage at characther level:{" "}</span>
               </p>
               {Object.keys(damagecharacLevel).map((key) => {
                 return (
@@ -73,7 +74,7 @@ function SpellPopUp(props) {
             </>
           )}
           <img src={MagicWand} alt="Magic wand" className="MagicWand_ico" />
-          <p className="spell_item_infos">Description :</p>
+          <p className="spell_item_infos"><span className="spell_item_bold">Description :{" "}</span></p>
           <p className="spell_item_desc">{description}</p>
           <div id="MagicWand_ico_down">
             <img src={MagicWand} alt="Magic wand" className="MagicWand_ico" />
