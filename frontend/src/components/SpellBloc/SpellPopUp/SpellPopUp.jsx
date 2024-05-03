@@ -27,8 +27,7 @@ function SpellPopUp(props) {
           <p className="spell_item_infos">
             &diams; Components :{" "}
             <span className="spell_item_italic">
-              {" "}
-              {components && components.join(", ")}
+              {Array.isArray(components) && components.join(", ")}
             </span>
           </p>
           <p className="spell_item_infos">

@@ -30,7 +30,6 @@ function Combat() {
 
   const dexterityCarac = caracs.find((carac) => carac.caracName === "DEX");
   const dexterityValue = dexterityCarac ? dexterityCarac.caracValue : 0;
-  // const dynamicInit = Math.floor((dexterityValue - 10) / 2);
 
   function initBonus() {
     if (dexterityValue === "") {
@@ -46,10 +45,7 @@ function Combat() {
     }
     return null;
   }
-  // const initChange = (e) => {
-  //   const valueInit = e.target.value;
-  //   setInitStat(valueInit);
-  // };
+
   const acChange = (e) => {
     const valueAC = e.target.value;
     setAcStat(valueAC);

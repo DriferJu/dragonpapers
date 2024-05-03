@@ -27,7 +27,9 @@ function LevelSpellBloc(props) {
 
   useEffect(() => {
     axios
-      .get("https://www.dnd5eapi.co/api/spells?level=0")
+      .get(
+        "https://www.dnd5eapi.co/api/spells?level=0"
+      )
       .then((response) => setSpells0(response.data.results))
       .catch((error) => console.error("error fetching Spells Level 0", error));
   }, []);
@@ -47,8 +49,14 @@ function LevelSpellBloc(props) {
   }, []);
 
   //   gestion Subb API
+  // function onSpellChoice(e) {
+  //   const spellUrl = `https://www.dnd5eapi.co/api/spells/${e.target.value.replace(
+  //     / /g,
+  //     "-"
+  //   )}`;
+
   function onSpellChoice(e) {
-    const spellUrl = `https://www.dnd5eapi.co/api/spells/${e.target.value.replace(
+    const spellUrl = `https://api.open5e.com/v1/spells/${e.target.value.replace(
       / /g,
       "-"
     )}`;
@@ -56,6 +64,7 @@ function LevelSpellBloc(props) {
     axios
       .get(spellUrl)
       .then((response) => {
+        console.info(response);
         const spellData = response.data;
         const spellName = spellData.name;
         setIsSpellName(spellName);
