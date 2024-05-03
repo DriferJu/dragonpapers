@@ -14,6 +14,8 @@ function CharacterClass() {
       .catch((error) => console.error("Error fetching classes:", error));
   }, []);
 
+  console.info(setPlayerClass)
+
   return (
     <div className="inputBox-class">
       <label htmlFor="characterClass">Class</label>

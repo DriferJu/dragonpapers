@@ -101,7 +101,9 @@ function LevelSpellBloc(props) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const openModal = () => {
-    setModalIsOpen(true);
+    if (isSpellName) {
+      setModalIsOpen(true);
+    }
   };
 
   const closeModal = () => {
