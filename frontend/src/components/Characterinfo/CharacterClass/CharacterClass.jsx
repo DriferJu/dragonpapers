@@ -7,14 +7,13 @@ function CharacterClass() {
   const [classes, setClasses] = useState([]);
   const { setPlayerClass } = useCharacter();
 
+
   useEffect(() => {
     axios
       .get("https://api.open5e.com/v1/classes/")
       .then((response) => setClasses(response.data.results))
       .catch((error) => console.error("Error fetching classes:", error));
   }, []);
-
-  console.info(setPlayerClass)
 
   return (
     <div className="inputBox-class">
