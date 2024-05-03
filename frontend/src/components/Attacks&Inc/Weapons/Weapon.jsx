@@ -4,6 +4,7 @@ import "./weapon.css";
 import Arrowline2 from "../../../assets/dnd_ico/ArrowLine_1.png";
 
 function Weapon() {
+  const { playerWeaponKnowledge } = useCharacter();
   const [nameMainWeapon, setNameMainWeapon] = useState("");
   const [mainWeaponBonus, setMainWeaponBonus] = useState("");
   const [mainWeaponDamageType, setMainWeaponDamageType] = useState("");
