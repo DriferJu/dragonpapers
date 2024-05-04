@@ -6,13 +6,6 @@ import useCharacter from "../../context/CharacterContext";
 
 function CaracBloc() {
   const { caracs, skillsBlocs } = useCharacter();
-  // setSkillsBlocs(
-  //   skillsBlocs.map((skill) =>
-  //     skill.skillId === name
-  //       ? { ...skill, caracValue: +e.target.value }
-  //       : skill
-  //   )
-  // );
 
   return (
     <>

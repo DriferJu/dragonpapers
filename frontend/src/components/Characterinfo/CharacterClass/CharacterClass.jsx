@@ -15,6 +15,7 @@ function CharacterClass() {
   //     .catch((error) => console.error("Error fetching classes:", error));
   // }, []);
 
+
   useEffect(() => {
     axios
       .get("https://api.open5e.com/v1/classes/")

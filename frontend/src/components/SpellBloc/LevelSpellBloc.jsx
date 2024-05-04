@@ -6,6 +6,7 @@ import SpellPopUp from "./SpellPopUp/SpellPopUp";
 import LittleArrow from "../../assets/dnd_ico/fleches.png";
 import SwordCross from "../../assets/dnd_ico/epees.png";
 import PlusSymbol from "../../assets/dnd_ico/plus.png";
+import useCharacter from "../../context/CharacterContext";
 
 function LevelSpellBloc(props) {
   const { title, id } = props;
@@ -19,6 +20,8 @@ function LevelSpellBloc(props) {
   const [isSpellDamageSlotLevel, setIsSpellDamageSlotLevel] = useState("");
   const [isSpellDamagecharacterLevel, setisSpellDamagecharacterLevel] =
     useState("");
+  const { playerClass } = useCharacter();
+
 
   //   gestion API
   const [spells0, setSpells0] = useState([]);
@@ -27,31 +30,35 @@ function LevelSpellBloc(props) {
 
   useEffect(() => {
     axios
-      .get("https://www.dnd5eapi.co/api/spells?level=0")
+      .get(
+        "https://api.open5e.com/v1/spells/?slug__in=&slug__iexact=&slug=&name__iexact=&name=&spell_level=0&spell_level__range=&spell_level__gt=&spell_level__gte=&spell_level__lt=&spell_level__lte=&target_range_sort=&target_range_sort__range=&target_range_sort__gt=&target_range_sort__gte=&target_range_sort__lt=&target_range_sort__lte=&school__iexact=&school=&school__in=&duration__iexact=&duration=&duration__in=&requires_concentration=unknown&requires_verbal_components=unknown&requires_somatic_components=unknown&requires_material_components=unknown&casting_time__iexact=&casting_time=&casting_time__in=&dnd_class__iexact=&dnd_class=&dnd_class__in=&dnd_class__icontains=&document__slug__iexact=&document__slug=&document__slug__in=&document__slug__not_in=a5e&level_int=&concentration=&components=&spell_lists_not="
+      )
       .then((response) => setSpells0(response.data.results))
       .catch((error) => console.error("error fetching Spells Level 0", error));
   }, []);
 
   useEffect(() => {
     axios
-      .get("https://www.dnd5eapi.co/api/spells?level=1")
+      .get(
+        "https://api.open5e.com/v1/spells/?slug__in=&slug__iexact=&slug=&name__iexact=&name=&spell_level=1&spell_level__range=&spell_level__gt=&spell_level__gte=&spell_level__lt=&spell_level__lte=&target_range_sort=&target_range_sort__range=&target_range_sort__gt=&target_range_sort__gte=&target_range_sort__lt=&target_range_sort__lte=&school__iexact=&school=&school__in=&duration__iexact=&duration=&duration__in=&requires_concentration=unknown&requires_verbal_components=unknown&requires_somatic_components=unknown&requires_material_components=unknown&casting_time__iexact=&casting_time=&casting_time__in=&dnd_class__iexact=&dnd_class=&dnd_class__in=&dnd_class__icontains=&document__slug__iexact=&document__slug=&document__slug__in=&document__slug__not_in=a5e&level_int=&concentration=&components=&spell_lists_not="
+      )
       .then((response) => setSpells1(response.data.results))
-      .catch((error) => console.error("error fetching Spells Level 0", error));
+      .catch((error) => console.error("error fetching Spells Level 1", error));
   }, []);
 
   useEffect(() => {
     axios
-      .get("https://www.dnd5eapi.co/api/spells?level=2")
+      .get(
+        "https://api.open5e.com/v1/spells/?slug__in=&slug__iexact=&slug=&name__iexact=&name=&spell_level=2&spell_level__range=&spell_level__gt=&spell_level__gte=&spell_level__lt=&spell_level__lte=&target_range_sort=&target_range_sort__range=&target_range_sort__gt=&target_range_sort__gte=&target_range_sort__lt=&target_range_sort__lte=&school__iexact=&school=&school__in=&duration__iexact=&duration=&duration__in=&requires_concentration=unknown&requires_verbal_components=unknown&requires_somatic_components=unknown&requires_material_components=unknown&casting_time__iexact=&casting_time=&casting_time__in=&dnd_class__iexact=&dnd_class=&dnd_class__in=&dnd_class__icontains=&document__slug__iexact=&document__slug=&document__slug__in=&document__slug__not_in=a5e&level_int=&concentration=&components=&spell_lists_not="
+      )
       .then((response) => setSpells2(response.data.results))
-      .catch((error) => console.error("error fetching Spells Level 0", error));
+      .catch((error) => console.error("error fetching Spells Level 2", error));
   }, []);
 
-  //   gestion Subb API
   function onSpellChoice(e) {
-    const spellUrl = `https://www.dnd5eapi.co/api/spells/${e.target.value.replace(
-      / /g,
-      "-"
-    )}`;
+    const spellUrl = `https://api.open5e.com/v1/spells/${e.target.value
+      .toLowerCase()
+      .replace(/ /g, "-")}`;
 
     axios
       .get(spellUrl)
@@ -92,7 +99,9 @@ function LevelSpellBloc(props) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const openModal = () => {
-    setModalIsOpen(true);
+    if (isSpellName) {
+      setModalIsOpen(true);
+    }
   };
 
   const closeModal = () => {
