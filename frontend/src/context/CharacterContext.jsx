@@ -9,9 +9,8 @@ export function CharacterProvider({ children }) {
   const [playerClass, setPlayerClass] = useState("");
   const [playerRace, setPlayerRace] = useState("");
   const [playerLevel, setPlayerLevel] = useState(0);
-  const [playerWeaponKnowledge, setPlayerWeaponKnowledge] = useState("");
-  console.info(playerWeaponKnowledge)
-  const [playerArmorKnowledge, setPlayerArmorKnowledge] = useState("");
+  const [playerWeaponKnowledge, setPlayerWeaponKnowledge] = useState(null);
+  const [playerArmorKnowledge, setPlayerArmorKnowledge] = useState(null);
   // STATS
   const [caracs, setCaracs] = useState([
     {

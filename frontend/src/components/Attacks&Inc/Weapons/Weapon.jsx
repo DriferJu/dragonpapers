@@ -6,6 +6,7 @@ import useCharacter from "../../../context/CharacterContext";
 
 function Weapon() {
   const { playerWeaponKnowledge } = useCharacter();
+  console.info(playerWeaponKnowledge)
   const [nameMainWeapon, setNameMainWeapon] = useState("");
   const [mainWeaponBonus, setMainWeaponBonus] = useState("");
   const [mainWeaponDamageType, setMainWeaponDamageType] = useState("");
