@@ -4,7 +4,6 @@ import joust from "../../assets/dnd_ico/joust.png";
 import knife from "../../assets/dnd_ico/epee.png";
 import Dragon from "../../assets/dnd_ico/dragon_2.png";
 import useCharacter from "../../context/CharacterContext";
-// import { func } from "prop-types";
 
 function BonusPerceptionBloc() {
   const { caracs, playerClass, playerLevel } = useCharacter();
@@ -16,9 +15,6 @@ function BonusPerceptionBloc() {
     10 + Math.floor((wisdomValue - 10) / 2) + perceptionIsSkill;
 
   const [proficiencyBonus, setProficiencyBonus] = useState("");
-  // console.log(playerClass)
-  // console.log(playerLevel);
-  // console.log(proficiencyBonus)
 
   useEffect(() => {
     switch (playerClass) {

@@ -9,7 +9,7 @@ function CharacterRace() {
 
   useEffect(() => {
     axios
-      .get("https://www.dnd5eapi.co/api/races")
+      .get("https://api.open5e.com/v1/races/")
       .then((response) => setRaces(response.data.results))
       .catch((error) => console.error("Error fetching races:", error));
   }, []);
