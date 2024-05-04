@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./weapon.css";
 import Arrowline2 from "../../../assets/dnd_ico/ArrowLine_1.png";
+import useCharacter from "../../../context/CharacterContext";
 
 function Weapon() {
+  const { playerWeaponKnowledge } = useCharacter();
+  console.info(playerWeaponKnowledge)
   const [nameMainWeapon, setNameMainWeapon] = useState("");
   const [mainWeaponBonus, setMainWeaponBonus] = useState("");
   const [mainWeaponDamageType, setMainWeaponDamageType] = useState("");
@@ -17,95 +20,197 @@ function Weapon() {
   const [weaponList, setWeaponList] = useState([]);
   const [weaponListTwo, setWeaponListTwo] = useState([]);
   const [rangeWeaponList, setRangeWeaponList] = useState([]);
+
   useEffect(() => {
-    axios
-      .get("https://www.dnd5eapi.co/api/equipment-categories/weapon")
-      .then((response) => {
-        const weaponsData = response.data.equipment;
-        const weaponNames = weaponsData.map((weapon) => weapon.name);
-        setWeaponList(weaponNames);
-      })
-      .catch((error) => {
+    let mounted = true;
+    let currentPage = "https://api.open5e.com/v1/weapons/";
+
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(currentPage);
+        if (mounted) {
+          const weaponsData = response.data.results;
+          const weaponNames = weaponsData.map((weapon) => weapon.name);
+          setWeaponList((prevList) => [...prevList, ...weaponNames]);
+
+          if (response.data.next) {
+            currentPage = response.data.next;
+            fetchData();
+          }
+        }
+      } catch (error) {
         console.error(
           "Erreur lors de la récupération des armes depuis l'API :",
           error
         );
-      });
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
+
   useEffect(() => {
-    axios
-      .get("https://www.dnd5eapi.co/api/equipment-categories/weapon")
-      .then((response) => {
-        const weaponsDataTwo = response.data.equipment;
-        const weaponNamesTwo = weaponsDataTwo.map(
-          (weaponTwo) => weaponTwo.name
-        );
-        setWeaponListTwo(weaponNamesTwo);
-      })
-      .catch((error) => {
+    let mountedTwo = true;
+    let currentPage = "https://api.open5e.com/v1/weapons/";
+
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(currentPage);
+        if (mountedTwo) {
+          const weaponsDataTwo = response.data.results;
+          const weaponNamesTwo = weaponsDataTwo.map((weapon) => weapon.name);
+          setWeaponListTwo((prevList) => [...prevList, ...weaponNamesTwo]);
+
+          if (response.data.next) {
+            currentPage = response.data.next;
+            fetchData();
+          }
+        }
+      } catch (error) {
         console.error(
           "Erreur lors de la récupération des armes depuis l'API :",
           error
         );
-      });
+      }
+    };
+    fetchData();
+    return () => {
+      mountedTwo = false;
+    };
   }, []);
+
+  // useEffect(() => {
+  //   axios
+  //     .get("https://www.dnd5eapi.co/api/equipment-categories/weapon")
+  //     .then((response) => {
+  //       const weaponsDataTwo = response.data.equipment;
+  //       const weaponNamesTwo = weaponsDataTwo.map(
+  //         (weaponTwo) => weaponTwo.name
+  //       );
+  //       setWeaponListTwo(weaponNamesTwo);
+  //     })
+  //     .catch((error) => {
+  //       console.error(
+  //         "Erreur lors de la récupération des armes depuis l'API :",
+  //         error
+  //       );
+  //     });
+  // }, []);
   useEffect(() => {
-    axios
-      .get("https://www.dnd5eapi.co/api/equipment-categories/ranged-weapons")
-      .then((response) => {
-        const rangesWeaponsData = response.data.equipment;
-        const rangesWeaponNames = rangesWeaponsData.map(
-          (weapon) => weapon.name
-        );
-        setRangeWeaponList(rangesWeaponNames);
-      })
-      .catch((error) => {
+    let mountedRange = true;
+    let currentPage = "https://api.open5e.com/v1/weapons/";
+
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(currentPage);
+        if (mountedRange) {
+          const rangeWeaponsData = response.data.results;
+          const filteredRangeWeapons = rangeWeaponsData.filter((weapon) =>
+            weapon.category.includes("Ranged")
+          );
+          const rangeWeaponNames = filteredRangeWeapons.map(
+            (weapon) => weapon.name
+          );
+          setRangeWeaponList((prevList) => [...prevList, ...rangeWeaponNames]);
+
+          if (response.data.next) {
+            currentPage = response.data.next;
+            fetchData();
+          }
+        }
+      } catch (error) {
         console.error(
           "Erreur lors de la récupération des armes depuis l'API :",
           error
         );
-      });
+      }
+    };
+    fetchData();
+    return () => {
+      mountedRange = false;
+    };
   }, []);
+
+  // useEffect(() => {
+  //   axios
+  //     .get("https://www.dnd5eapi.co/api/equipment-categories/ranged-weapons")
+  //     .then((response) => {
+  //       const rangesWeaponsData = response.data.equipment;
+  //       const rangesWeaponNames = rangesWeaponsData.map(
+  //         (weapon) => weapon.name
+  //       );
+  //       setRangeWeaponList(rangesWeaponNames);
+  //     })
+  //     .catch((error) => {
+  //       console.error(
+  //         "Erreur lors de la récupération des armes depuis l'API :",
+  //         error
+  //       );
+  //     });
+  // }, []);
+
+  function capitalizeFirstLetter(Abcde) {
+    return Abcde.charAt(0).toUpperCase() + Abcde.slice(1).toLowerCase();
+  }
+
   function OnMainWeaponChoice(e) {
     setNameMainWeapon(e.target.value);
     axios
       .get(
-        `https://www.dnd5eapi.co/api/equipment/${e.target.value.toLowerCase()}`
+        `https://api.open5e.com/v1/weapons/${e.target.value
+          .toLowerCase()
+          .replace(/\s/g, "-")
+          .replace(/,/g, "")}`
       )
+
       .then((response) => {
-        const damagesData = response.data.damage;
+        const damagesData = response.data;
         const damageDices = damagesData.damage_dice;
         setMainWeaponBonus(damageDices);
-        const damageTypes = damagesData.damage_type.name;
-        setMainWeaponDamageType(damageTypes);
+        const damageTypes = damagesData.damage_type;
+        console.info(damageTypes);
+        const capitalDamageTypes = capitalizeFirstLetter(damageTypes);
+        setMainWeaponDamageType(capitalDamageTypes);
       });
   }
   function OnOffHandWeaponChoice(e) {
     setNameOffHandWeapon(e.target.value);
     axios
       .get(
-        `https://www.dnd5eapi.co/api/equipment/${e.target.value.toLowerCase()}`
+        `https://api.open5e.com/v1/weapons/${e.target.value
+          .toLowerCase()
+          .replace(/\s/g, "-")
+          .replace(/,/g, "")}`
       )
       .then((response) => {
-        const damagesDataSec = response.data.damage;
+        const damagesDataSec = response.data;
         const damageDicesSec = damagesDataSec.damage_dice;
         setOffHandWeaponBonus(damageDicesSec);
-        const damageTypesSec = damagesDataSec.damage_type.name;
-        setOffHandDamageType(damageTypesSec);
+        const damageTypesSec = damagesDataSec.damage_type;
+        const capitalDamageTypesSec = capitalizeFirstLetter(damageTypesSec);
+        setOffHandDamageType(capitalDamageTypesSec);
       });
   }
   function OnRangeWeaponChoice(e) {
     setNameRangeWeapon(e.target.value);
     axios
       .get(
-        `https://www.dnd5eapi.co/api/equipment/${e.target.value.toLowerCase()}`
+        `https://api.open5e.com/v1/weapons/${e.target.value
+          .toLowerCase()
+          .replace(/\s/g, "-")
+          .replace(/,/g, "")}`
       )
       .then((response) => {
-        const damagesDataThird = response.data.damage;
+        const damagesDataThird = response.data;
         const damageDicesThird = damagesDataThird.damage_dice;
         setRangeWeaponBonus(damageDicesThird);
-        const damageTypesThird = damagesDataThird.damage_type.name;
-        setRangeWeaponType(damageTypesThird);
+        const damageTypesThird = damagesDataThird.damage_type;
+        const capitalDamageTypesThird = capitalizeFirstLetter(damageTypesThird);
+        setRangeWeaponType(capitalDamageTypesThird);
       });
   }
   return (

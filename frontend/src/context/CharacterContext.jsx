@@ -9,7 +9,8 @@ export function CharacterProvider({ children }) {
   const [playerClass, setPlayerClass] = useState("");
   const [playerRace, setPlayerRace] = useState("");
   const [playerLevel, setPlayerLevel] = useState(0);
-
+  const [playerWeaponKnowledge, setPlayerWeaponKnowledge] = useState(null);
+  const [playerArmorKnowledge, setPlayerArmorKnowledge] = useState(null);
   // STATS
   const [caracs, setCaracs] = useState([
     {
@@ -187,6 +188,10 @@ export function CharacterProvider({ children }) {
       setPlayerHealthDice,
       skillsBlocs,
       setSkillsBlocs,
+      playerWeaponKnowledge,
+      setPlayerWeaponKnowledge,
+      playerArmorKnowledge,
+      setPlayerArmorKnowledge,
     }),
     [
       playerClass,
@@ -196,6 +201,8 @@ export function CharacterProvider({ children }) {
       skillsBlocs,
       color,
       caracs,
+      playerWeaponKnowledge,
+      playerArmorKnowledge,
     ]
   );
 

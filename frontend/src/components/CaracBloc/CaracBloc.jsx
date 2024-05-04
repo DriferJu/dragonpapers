@@ -10,9 +10,9 @@ function CaracBloc() {
   return (
     <>
       <section id="CARACS_screen">
-        {/* smartphone */}
+        {/* mobile */}
         <div id="carac_MQ_smartPh">
-          {/* smartphone CARACS */}
+          {/* mobile CARACS */}
           <div className="carac_Bloc">
             {caracs.map((carac, index) => (
               <CaracSeg

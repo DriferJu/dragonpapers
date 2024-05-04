@@ -6,16 +6,16 @@ import fleche from "../../../assets/dnd_ico/fleches.png";
 function Armor() {
   const [armorName, setArmorName] = useState("");
   const [armorclass, setArmorclass] = useState("");
-  const [strenght, setStrenght] = useState("");
+  const [armorBonus, setArmorBonus] = useState("");
   const [disadvantage, setDisadvantage] = useState("");
   const [armorIsOpen, setArmorIsOpen] = useState(false);
 
   const [armorList, setArmorList] = useState([]);
   useEffect(() => {
     axios
-      .get("https://www.dnd5eapi.co/api/equipment-categories/armor")
+      .get("https://api.open5e.com/v1/armor/")
       .then((response) => {
-        const armorData = response.data.equipment;
+        const armorData = response.data.results;
         const armorNames = armorData.map((armor) => armor.name);
         setArmorList(armorNames);
       })
@@ -30,24 +30,41 @@ function Armor() {
     setArmorName(e.target.value);
     axios
       .get(
-        `https://www.dnd5eapi.co/api/equipment/${e.target.value
+        `https://api.open5e.com/v1/armor/${e.target.value
           .replace(/ /g, "-")
+          .replace(/\(|\)/g, '')
           .toLowerCase()}`
       )
-
       .then((response) => {
-        const armorDataChoice = response.data.armor_class;
-        const armorStat = armorDataChoice.base;
+        const armorDataChoice = response.data;
+        console.info(armorDataChoice)
+        const armorStat = armorDataChoice.base_ac;
         setArmorclass(armorStat);
-        const armorDext = armorDataChoice.dex_bonus;
-        setStrenght(armorDext);
-        const armorDataChoiceTwo = response.data.armor_class;
-        const armorDisadvantage = armorDataChoiceTwo.dex_bonus;
-        setDisadvantage(armorDisadvantage);
-        // const damageTypesThird = damagesDataThird.damage_type.name;
-        // setRangeWeaponType(damageTypesThird);
+        const armorDext = armorDataChoice.plus_dex_mod ? 'Dext' : undefined;
+        const armorCon = armorDataChoice.plus_con_mod ? 'Const' : undefined;
+        const amorWis = armorDataChoice.plus_wis_mod ? 'Wisd' : undefined;
+  
+        const bonuses = [armorDext, armorCon, amorWis].filter(Boolean);
+        let bonusString;
+        if (bonuses.length === 0) {
+          bonusString = 'None';
+        } else if (bonuses.length === 1) {
+          bonusString = bonuses[0];
+        } else if (bonuses.length === 2) {
+          bonusString = bonuses.join(' + ');
+        } else {
+          const lastBonus = bonuses.pop();
+          bonusString = bonuses.join(' + ') + ' + ' + lastBonus;
+        }
+        setArmorBonus(bonusString);
+  
+        const armorFlatMod = armorDataChoice.plus_flat_mod > 0 ? armorDataChoice.plus_flat_mod : undefined;
+  
+        const armorStealthDisadvantage = armorDataChoice.stealth_disadvantage ? 'Stealth' : 'None';;
+        setDisadvantage(armorStealthDisadvantage);
       });
   }
+  
   const toggleArmor = () => {
     setArmorIsOpen(!armorIsOpen);
   };
@@ -115,14 +132,14 @@ function Armor() {
                 </div>
 
                 <div className="armor_strenght">
-                  <h1 className="armor_sub_heading">Dex Bonus</h1>
+                  <h1 className="armor_sub_heading">Bonus</h1>
                   <input
                     className="armor_strenght_input"
                     type="text"
                     id="armor_strenght_input"
                     placeholder="None"
-                    value={strenght}
-                    onChange={(e) => setStrenght(e.target.value)}
+                    value={armorBonus}
+                    onChange={(e) => setArmorBonus(e.target.value)}
                   />
                 </div>
               </div>
@@ -190,14 +207,14 @@ function Armor() {
                 </div>
 
                 <div className="armor_strenght_desktop">
-                  <h1 className="armor_sub_heading">Dex Bonus</h1>
+                  <h1 className="armor_sub_heading">Bonus</h1>
                   <input
                     className="armor_strenght_input_desktop"
                     type="text"
                     id="armor_strenght_input"
                     placeholder="None"
-                    value={strenght}
-                    onChange={(e) => setStrenght(e.target.value)}
+                    value={armorBonus}
+                    onChange={(e) => setArmorBonus(e.target.value)}
                   />
                 </div>
               </div>
@@ -240,14 +257,14 @@ function Armor() {
           </div>
           <div className="armor_bloc_sec">
             <div className="armor_strenght">
-              <h1 className="armor_sub_heading">Dex Bonus</h1>
+              <h1 className="armor_sub_heading">Bonus</h1>
               <input
                 className="armor_strenght_input"
                 type="text"
                 id="armor_strenght_input"
                 placeholder="None"
-                value={strenght}
-                onChange={(e) => setStrenght(e.target.value)}
+                value={armorBonus}
+                onChange={(e) => setArmorBonus(e.target.value)}
               />
             </div>
 
