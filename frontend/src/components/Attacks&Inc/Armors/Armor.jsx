@@ -37,7 +37,6 @@ function Armor() {
       )
       .then((response) => {
         const armorDataChoice = response.data;
-        console.info(armorDataChoice)
         const armorStat = armorDataChoice.base_ac;
         setArmorclass(armorStat);
         const armorDext = armorDataChoice.plus_dex_mod ? 'Dext' : undefined;
