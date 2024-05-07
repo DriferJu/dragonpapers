@@ -12,10 +12,13 @@ import BonusPerceptionBloc from "../components/BonusPerceptionBloc/BonusPercepti
 import AttackNinc from "../components/Attacks&Inc/AttackNinc";
 import SnakeDragon from "../assets/dnd_ico/snake-dragon.png";
 import { CharacterProvider } from "../context/CharacterContext";
+import useCharacter from "../context/CharacterContext";
 
 function CharacterSheet() {
+  const { playerClass } = useCharacter();
+
   return (
-    <CharacterProvider>
+    <div>
       <div className="result Sheet_smartphone" id="CHARACTERS_SHEET">
         <CharacterInfo />
         <BonusPerceptionBloc />
@@ -37,7 +40,15 @@ function CharacterSheet() {
           <div id="DesktopLeftColumn">
             <BonusPerceptionBloc />
             <CaracBloc />
-            <SpellBloc />
+            {(playerClass === "bard" ||
+              playerClass === "cleric" ||
+              playerClass === "druid" ||
+              playerClass === "paladin" ||
+              playerClass === "ranger" ||
+              playerClass === "sorcerer" ||
+              playerClass === "warlock" ||
+              playerClass === "wizard") && <SpellBloc />}
+
             <div className="PositionSnakeDragon">
               <img src={SnakeDragon} alt="snake dragon" id="snakeDragon" />
             </div>
@@ -50,8 +61,14 @@ function CharacterSheet() {
           </div>
         </div>
       </div>
-    </CharacterProvider>
+    </div>
   );
 }
 
-export default CharacterSheet;
+export default function WrappedCharacterSheet() {
+  return (
+    <CharacterProvider>
+      <CharacterSheet />
+    </CharacterProvider>
+  );
+}
