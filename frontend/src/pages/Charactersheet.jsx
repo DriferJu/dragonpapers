@@ -6,6 +6,7 @@ import CharacterInfo from "../components/Characterinfo/CharacterInfo";
 import Combat from "../components/Combat/Combat";
 import HealthDice from "../components/Combat/HealthDice";
 import CaracBloc from "../components/CaracBloc/CaracBloc";
+import FeaturesBloc from "../components/FeaturesBloc/FeaturesBloc";
 import SpellBloc from "../components/SpellBloc/SpellBloc";
 import EquipmentBloc from "../components/EquipmentBloc/EquipmentBloc";
 import BonusPerceptionBloc from "../components/BonusPerceptionBloc/BonusPerceptionBloc";
@@ -40,6 +41,7 @@ function CharacterSheet() {
           <div id="DesktopLeftColumn">
             <BonusPerceptionBloc />
             <CaracBloc />
+            <FeaturesBloc/>
             {(playerClass === "bard" ||
               playerClass === "cleric" ||
               playerClass === "druid" ||
