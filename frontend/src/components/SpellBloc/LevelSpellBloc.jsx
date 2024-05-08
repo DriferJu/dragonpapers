@@ -24,6 +24,7 @@ function LevelSpellBloc(props) {
   const [palSpellsData, setPalSpellsData] = useState([]);
   const [paladinSpells, setPaladinSpells] = useState([]);
   const { playerClass, playerLevel } = useCharacter();
+  console.info(spells);
 
   const spellSlotsByLevel = spellSlots[playerClass]?.[playerLevel];
 
@@ -94,9 +95,8 @@ function LevelSpellBloc(props) {
 
   // API spells detail
   function onSpellChoice(e) {
-    const spellUrl = `https://api.open5e.com/v1/spells/${e.target.value
-      .toLowerCase()
-      .replace(/ /g, "-")}`;
+    const spellUrl = `https://api.open5e.com/v1/spells/${e.target.value}`;
+    console.info("spellUrl:", spellUrl)
 
     axios
       .get(spellUrl)
@@ -127,7 +127,6 @@ function LevelSpellBloc(props) {
       });
   }
 
-
   // gestion Pop Up
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -140,7 +139,6 @@ function LevelSpellBloc(props) {
   const closeModal = () => {
     setModalIsOpen(false);
   };
-
 
   return (
     <>
@@ -155,13 +153,11 @@ function LevelSpellBloc(props) {
                   <select
                     name={`spell${spellLevel}`}
                     className="spell_item"
-                    onChange={
-                      onSpellChoice(e)
-                    }
+                    onChange={(e) => onSpellChoice(e)}
                   >
                     <option value="">select a spell level {spellLevel}</option>
                     {spells[spellLevel]?.map((spell) => (
-                      <option key={spell.index} value={spell.index}>
+                      <option key={spell.index} value={spell.slug}>
                         {spell.name}
                       </option>
                     ))}
@@ -179,15 +175,13 @@ function LevelSpellBloc(props) {
                     <select
                       name={`spell${spellLevel}`}
                       className="spell_item"
-                      onChange={
-                        onSpellChoice(e)
-                      }
+                      onChange={(e) => onSpellChoice(e)}
                     >
                       <option value="">
                         select a spell level {spellLevel}
                       </option>
                       {spells[spellLevel]?.map((spell) => (
-                        <option key={spell.index} value={spell.index}>
+                        <option key={spell.index} value={spell.slug}>
                           {spell.name}
                         </option>
                       ))}
@@ -200,7 +194,6 @@ function LevelSpellBloc(props) {
                     />
                   </div>
                 ))}
-                spellIndex += numberOfSpells;
               </React.Fragment>
             )
           )}
