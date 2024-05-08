@@ -24,7 +24,6 @@ function LevelSpellBloc(props) {
   const [palSpellsData, setPalSpellsData] = useState([]);
   const [paladinSpells, setPaladinSpells] = useState([]);
   const { playerClass, playerLevel } = useCharacter();
-  console.info(spells);
 
   const spellSlotsByLevel = spellSlots[playerClass]?.[playerLevel];
 
@@ -96,7 +95,6 @@ function LevelSpellBloc(props) {
   // API spells detail
   function onSpellChoice(e) {
     const spellUrl = `https://api.open5e.com/v1/spells/${e.target.value}`;
-    console.info("spellUrl:", spellUrl)
 
     axios
       .get(spellUrl)
