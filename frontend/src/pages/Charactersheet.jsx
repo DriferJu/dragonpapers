@@ -15,7 +15,7 @@ import { CharacterProvider } from "../context/CharacterContext";
 import useCharacter from "../context/CharacterContext";
 
 function CharacterSheet() {
-  const { playerClass } = useCharacter();
+  const { playerClass, playerLevel } = useCharacter();
 
   return (
     <div>
@@ -47,7 +47,7 @@ function CharacterSheet() {
               playerClass === "ranger" ||
               playerClass === "sorcerer" ||
               playerClass === "warlock" ||
-              playerClass === "wizard") && <SpellBloc />}
+              playerClass === "wizard") && playerLevel && <SpellBloc />}
 
             <div className="PositionSnakeDragon">
               <img src={SnakeDragon} alt="snake dragon" id="snakeDragon" />

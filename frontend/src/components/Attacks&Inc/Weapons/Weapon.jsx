@@ -81,23 +81,6 @@ function Weapon() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   axios
-  //     .get("https://www.dnd5eapi.co/api/equipment-categories/weapon")
-  //     .then((response) => {
-  //       const weaponsDataTwo = response.data.equipment;
-  //       const weaponNamesTwo = weaponsDataTwo.map(
-  //         (weaponTwo) => weaponTwo.name
-  //       );
-  //       setWeaponListTwo(weaponNamesTwo);
-  //     })
-  //     .catch((error) => {
-  //       console.error(
-  //         "Erreur lors de la récupération des armes depuis l'API :",
-  //         error
-  //       );
-  //     });
-  // }, []);
   useEffect(() => {
     let mountedRange = true;
     let currentPage = "https://api.open5e.com/v1/weapons/";
@@ -133,23 +116,6 @@ function Weapon() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   axios
-  //     .get("https://www.dnd5eapi.co/api/equipment-categories/ranged-weapons")
-  //     .then((response) => {
-  //       const rangesWeaponsData = response.data.equipment;
-  //       const rangesWeaponNames = rangesWeaponsData.map(
-  //         (weapon) => weapon.name
-  //       );
-  //       setRangeWeaponList(rangesWeaponNames);
-  //     })
-  //     .catch((error) => {
-  //       console.error(
-  //         "Erreur lors de la récupération des armes depuis l'API :",
-  //         error
-  //       );
-  //     });
-  // }, []);
 
   function capitalizeFirstLetter(Abcde) {
     return Abcde.charAt(0).toUpperCase() + Abcde.slice(1).toLowerCase();
