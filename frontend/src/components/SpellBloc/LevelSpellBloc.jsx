@@ -12,14 +12,17 @@ function LevelSpellBloc(props) {
   const { title, id } = props;
   const [isSpellName, setIsSpellName] = useState("");
   const [isSpellRange, setIsSpellRange] = useState("");
+  const [isSpellSchool, setIsSpellSchool] = useState("");
   const [isSpellComponents, setIsSpellComponents] = useState("");
+  const [isSpellMaterial, setIsSpellMaterial] = useState("");
   const [isSpellDuration, setIsSpellDuration] = useState("");
   const [isSpellCastingTime, setIsSpellCastingTime] = useState("");
   const [isSpellDescription, setIsSpellDescription] = useState("");
-  const [isSpellDamage, setIsSpellDamage] = useState("");
-  const [isSpellDamageSlotLevel, setIsSpellDamageSlotLevel] = useState("");
-  const [isSpellDamagecharacterLevel, setisSpellDamagecharacterLevel] =
-    useState("");
+  const [isRequiresConcentration, setIsRequiresConcentration] = useState(false);
+  const [isConcentration, setIsConcentration] = useState("");
+  const [isCastAsRitual, setIsCastAsRitual] = useState(false);
+  const [isRitual, setIsRitual] = useState("");
+  const [isHighterLevel, setIsHighterLevel] = useState("");
   const [spells, setSpells] = useState({});
   const [palSpellsData, setPalSpellsData] = useState([]);
   const [paladinSpells, setPaladinSpells] = useState([]);
@@ -104,21 +107,29 @@ function LevelSpellBloc(props) {
         setIsSpellName(spellName);
         const spellRange = spellData.range;
         setIsSpellRange(spellRange);
+        const spellSpellSchool = spellData.school;
+        setIsSpellSchool(spellSpellSchool);
         const spellComponents = spellData.components;
         setIsSpellComponents(spellComponents);
+        const spellMaterial = spellData.material;
+        setIsSpellMaterial(spellMaterial)
         const spellCastingTime = spellData.casting_time;
         setIsSpellCastingTime(spellCastingTime);
         const spellDuration = spellData.duration;
         setIsSpellDuration(spellDuration);
         const spellDescription = spellData.desc;
         setIsSpellDescription(spellDescription);
-        const spellDamage = spellData.damage.damage_type.name;
-        setIsSpellDamage(spellDamage);
-        const spellDamageSlotLevel = spellData.damage.damage_at_slot_level;
-        setIsSpellDamageSlotLevel(spellDamageSlotLevel);
-        const spellDamagecharacterLevel =
-          spellData.damage.damage_at_character_level;
-        setisSpellDamagecharacterLevel(spellDamagecharacterLevel);
+        const RequiresConcentration = spellData.requires_concentration;
+        setIsRequiresConcentration(RequiresConcentration);
+        const concentration = spellData.concentration;
+        setIsConcentration(concentration);
+        const CastAsRitual = spellData.can_be_cast_as_ritual;        ;
+        console.info("CastAsRitual:", CastAsRitual)
+        setIsCastAsRitual(CastAsRitual);
+        const ritual = spellData.ritual;
+        setIsRitual(ritual);
+        const HighterLevel = spellData.higher_level;
+        setIsHighterLevel(HighterLevel);
       })
       .catch((error) => {
         console.error("Error fetching spell details:", error);
@@ -212,7 +223,7 @@ function LevelSpellBloc(props) {
                   >
                     <option value="">select a spell level {spellLevel}</option>
                     {paladinSpells[spellLevel]?.map((spell) => (
-                      <option key={spell.index} value={spell.index}>
+                      <option key={spell.index} value={spell.slug}>
                         {spell.name}
                       </option>
                     ))}
@@ -236,7 +247,7 @@ function LevelSpellBloc(props) {
                         select a spell level {spellLevel}
                       </option>
                       {paladinSpells[spellLevel]?.map((spell) => (
-                        <option key={spell.index} value={spell.index}>
+                        <option key={spell.index} value={spell.slug}>
                           {spell.name}
                         </option>
                       ))}
@@ -269,13 +280,17 @@ function LevelSpellBloc(props) {
             <SpellPopUp
               name={isSpellName}
               range={isSpellRange}
+              school={isSpellSchool}
               components={isSpellComponents}
               duration={isSpellDuration}
               castingTime={isSpellCastingTime}
               description={isSpellDescription}
-              damage={isSpellDamage}
-              damageSlot={isSpellDamageSlotLevel}
-              damagecharacLevel={isSpellDamagecharacterLevel}
+              requiresConcentration={isRequiresConcentration}
+              concentration={isConcentration}
+              castAsRitual={isCastAsRitual}
+              ritual={isRitual}
+              highterLevel={isHighterLevel}
+              material={isSpellMaterial}
             />
           </Box>
         </Modal>

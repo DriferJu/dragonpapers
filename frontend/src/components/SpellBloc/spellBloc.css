@@ -114,6 +114,7 @@
     width: 30px;
     height: 30px;
     padding: 7px;
+    cursor: pointer;
   }
 }
 /* MEDIA-QUERIES PRINT */
