@@ -25,14 +25,29 @@ function LevelSpellBloc(props) {
   const [paladinSpells, setPaladinSpells] = useState([]);
   const { playerClass, playerLevel } = useCharacter();
 
-  console.info("spells:", spells);
-  console.info("palSpellsData:", palSpellsData);
-  console.info("paladinSpells:", paladinSpells);
-
   const spellSlotsByLevel = spellSlots[playerClass]?.[playerLevel];
 
-  // API Paladin Spells (aka fucking API)
+  // API spells list
+  useEffect(() => {
+    if (playerClass && playerClass !== "paladin") {
+      const promises = [];
+      for (let i = 0; i <= 9; i++) {
+        let url = `https://api.open5e.com/v1/spells/?slug__in=&slug__iexact=&slug=&name__iexact=&name=&spell_level=${i}&spell_level__range=&spell_level__gt=&spell_level__gte=&spell_level__lt=&spell_level__lte=&target_range_sort=&target_range_sort__range=&target_range_sort__gt=&target_range_sort__gte=&target_range_sort__lt=&target_range_sort__lte=&school__iexact=&school=&school__in=&duration__iexact=&duration=&duration__in=&requires_concentration=unknown&requires_verbal_components=unknown&requires_somatic_components=unknown&requires_material_components=unknown&casting_time__iexact=&casting_time=&casting_time__in=&dnd_class__iexact=&dnd_class=&dnd_class__in=&dnd_class__icontains=&spell_lists=${playerClass}&document__slug__iexact=&document__slug=&document__slug__in=&document__slug__not_in=&level_int=&concentration=&components=&spell_lists_not=`;
+        promises.push(axios.get(url));
+      }
+      Promise.all(promises)
+        .then((responses) => {
+          const spellsByLevel = {};
+          responses.forEach((response, index) => {
+            spellsByLevel[index] = response.data.results;
+          });
+          setSpells(spellsByLevel);
+        })
+        .catch((error) => console.error("error fetching Spells", error));
+    }
+  }, [playerClass]);
 
+  // API Paladin Spells list
   useEffect(() => {
     let mounted = true;
     let currentPage = "https://api.open5e.com/v1/spells/?search=paladin";
@@ -65,39 +80,17 @@ function LevelSpellBloc(props) {
     };
   }, []);
 
-
   useEffect(() => {
-    
     const spellsByLevel = {};
     for (let i = 0; i <= 4; i++) {
       const level = i + 1;
-      const levelSpells = palSpellsData.filter((spell) => spell.spell_level === level);
+      const levelSpells = palSpellsData.filter(
+        (spell) => spell.spell_level === level
+      );
       spellsByLevel[level] = levelSpells;
     }
-    setPaladinSpells(spellsByLevel)
+    setPaladinSpells(spellsByLevel);
   }, [palSpellsData]);
-
-  // API spells list
-  useEffect(() => {
-    if (playerClass && playerClass !== "paladin") {
-      const promises = [];
-      for (let i = 0; i <= 9; i++) {
-        let url = `https://api.open5e.com/v1/spells/?slug__in=&slug__iexact=&slug=&name__iexact=&name=&spell_level=${i}&spell_level__range=&spell_level__gt=&spell_level__gte=&spell_level__lt=&spell_level__lte=&target_range_sort=&target_range_sort__range=&target_range_sort__gt=&target_range_sort__gte=&target_range_sort__lt=&target_range_sort__lte=&school__iexact=&school=&school__in=&duration__iexact=&duration=&duration__in=&requires_concentration=unknown&requires_verbal_components=unknown&requires_somatic_components=unknown&requires_material_components=unknown&casting_time__iexact=&casting_time=&casting_time__in=&dnd_class__iexact=&dnd_class=&dnd_class__in=&dnd_class__icontains=&spell_lists=${playerClass}&document__slug__iexact=&document__slug=&document__slug__in=&document__slug__not_in=&level_int=&concentration=&components=&spell_lists_not=`;
-        promises.push(axios.get(url));
-      }
-      Promise.all(promises)
-        .then((responses) => {
-          const spellsByLevel = {};
-          responses.forEach((response, index) => {
-            spellsByLevel[index] = response.data.results;
-          });
-          setSpells(spellsByLevel);
-          console.info("spellsByLevel:", spellsByLevel);
-        })
-        .catch((error) => console.error("error fetching Spells", error));
-    }
-  }, [playerClass]);
-
 
   // API spells detail
   function onSpellChoice(e) {
@@ -134,6 +127,7 @@ function LevelSpellBloc(props) {
       });
   }
 
+
   // gestion Pop Up
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -147,43 +141,23 @@ function LevelSpellBloc(props) {
     setModalIsOpen(false);
   };
 
+
   return (
     <>
-    {playerClass !== "paladin" && (
-      <div className="spells_lvls">
-        
-        {Object.entries(spellSlotsByLevel || {}).map(
-          ([spellLevel, numberOfSpells]) => (
-            <React.Fragment key={spellLevel}>
-              <h3 className="spell_lvl_subtitle">Level {spellLevel}</h3>
-              <div className="spells_list">
-                <label htmlFor={`Spells_Level_${spellLevel}`}> </label>
-                <select
-                  name={`spell${spellLevel}`}
-                  className="spell_item"
-                  onChange={onSpellChoice}
-                >
-                  <option value="">select a spell level {spellLevel}</option>
-                  {spells[spellLevel]?.map((spell) => (
-                    <option key={spell.index} value={spell.index}>
-                      {spell.name}
-                    </option>
-                  ))}
-                </select>
-                <img
-                  src={PlusSymbol}
-                  alt="en savoir +"
-                  onClick={openModal}
-                  className="open_spell_popup"
-                />
-              </div>
-              {Array.from({ length: numberOfSpells - 1 }, (_, i) => (
-                <div className="spells_list" key={i}>
+      {playerClass !== "paladin" && (
+        <div className="spells_lvls">
+          {Object.entries(spellSlotsByLevel || {}).map(
+            ([spellLevel, numberOfSpells]) => (
+              <React.Fragment key={spellLevel}>
+                <h3 className="spell_lvl_subtitle">Level {spellLevel}</h3>
+                <div className="spells_list">
                   <label htmlFor={`Spells_Level_${spellLevel}`}> </label>
                   <select
                     name={`spell${spellLevel}`}
                     className="spell_item"
-                    onChange={onSpellChoice}
+                    onChange={
+                      onSpellChoice(e)
+                    }
                   >
                     <option value="">select a spell level {spellLevel}</option>
                     {spells[spellLevel]?.map((spell) => (
@@ -199,41 +173,46 @@ function LevelSpellBloc(props) {
                     className="open_spell_popup"
                   />
                 </div>
-              ))}
-            </React.Fragment>
-          )
-        )}
-      </div>)}
+                {Array.from({ length: numberOfSpells - 1 }, (_, i) => (
+                  <div className="spells_list" key={i}>
+                    <label htmlFor={`Spells_Level_${spellLevel}`}> </label>
+                    <select
+                      name={`spell${spellLevel}`}
+                      className="spell_item"
+                      onChange={
+                        onSpellChoice(e)
+                      }
+                    >
+                      <option value="">
+                        select a spell level {spellLevel}
+                      </option>
+                      {spells[spellLevel]?.map((spell) => (
+                        <option key={spell.index} value={spell.index}>
+                          {spell.name}
+                        </option>
+                      ))}
+                    </select>
+                    <img
+                      src={PlusSymbol}
+                      alt="en savoir +"
+                      onClick={openModal}
+                      className="open_spell_popup"
+                    />
+                  </div>
+                ))}
+                spellIndex += numberOfSpells;
+              </React.Fragment>
+            )
+          )}
+        </div>
+      )}
       {playerClass === "paladin" && (
-      <div className="spells_lvls">
-        
-        {Object.entries(spellSlotsByLevel || {}).map(
-          ([spellLevel, numberOfSpells]) => (
-            <React.Fragment key={spellLevel}>
-              <h3 className="spell_lvl_subtitle">Level {spellLevel}</h3>
-              <div className="spells_list">
-                <label htmlFor={`Spells_Level_${spellLevel}`}> </label>
-                <select
-                  name={`spell${spellLevel}`}
-                  className="spell_item"
-                  onChange={onSpellChoice}
-                >
-                  <option value="">select a spell level {spellLevel}</option>
-                  {paladinSpells[spellLevel]?.map((spell) => (
-                    <option key={spell.index} value={spell.index}>
-                      {spell.name}
-                    </option>
-                  ))}
-                </select>
-                <img
-                  src={PlusSymbol}
-                  alt="en savoir +"
-                  onClick={openModal}
-                  className="open_spell_popup"
-                />
-              </div>
-              {Array.from({ length: numberOfSpells - 1 }, (_, i) => (
-                <div className="spells_list" key={i}>
+        <div className="spells_lvls">
+          {Object.entries(spellSlotsByLevel || {}).map(
+            ([spellLevel, numberOfSpells]) => (
+              <React.Fragment key={spellLevel}>
+                <h3 className="spell_lvl_subtitle">Level {spellLevel}</h3>
+                <div className="spells_list">
                   <label htmlFor={`Spells_Level_${spellLevel}`}> </label>
                   <select
                     name={`spell${spellLevel}`}
@@ -254,11 +233,36 @@ function LevelSpellBloc(props) {
                     className="open_spell_popup"
                   />
                 </div>
-              ))}
-            </React.Fragment>
-          )
-        )}
-      </div>)}
+                {Array.from({ length: numberOfSpells - 1 }, (_, i) => (
+                  <div className="spells_list" key={i}>
+                    <label htmlFor={`Spells_Level_${spellLevel}`}> </label>
+                    <select
+                      name={`spell${spellLevel}`}
+                      className="spell_item"
+                      onChange={onSpellChoice}
+                    >
+                      <option value="">
+                        select a spell level {spellLevel}
+                      </option>
+                      {paladinSpells[spellLevel]?.map((spell) => (
+                        <option key={spell.index} value={spell.index}>
+                          {spell.name}
+                        </option>
+                      ))}
+                    </select>
+                    <img
+                      src={PlusSymbol}
+                      alt="en savoir +"
+                      onClick={openModal}
+                      className="open_spell_popup"
+                    />
+                  </div>
+                ))}
+              </React.Fragment>
+            )
+          )}
+        </div>
+      )}
 
       {modalIsOpen ? (
         <Modal open={modalIsOpen} onClose={closeModal} className="spell_popup">
