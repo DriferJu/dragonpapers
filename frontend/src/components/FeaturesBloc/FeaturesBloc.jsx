@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { Modal, Box } from "@mui/material";
 import axios from "axios";
+import FeaturesPopUp from "./FeaturesPopUp/FeaturesPopUp";
+import SwordCross from "../../assets/dnd_ico/epees.png";
 import useCharacter from "../../context/CharacterContext";
 import "./featuresBloc.css";
 
 function FeaturesBloc() {
   const [classData, setClassData] = useState({});
-  const [featuresByLevel, setFeaturesByLevel] = useState([]); // Ajouter le state featuresByLevel
+  const [featuresByLevel, setFeaturesByLevel] = useState([]);
+  const [selectedFeature, setSelectedFeature] = useState({})
   const { playerClass, playerLevel } = useCharacter();
   console.info("classData:", classData);
   console.info("featuresByLevel:", featuresByLevel);
+  console.info("selectedFeatures:", selectedFeature);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -77,7 +82,7 @@ function FeaturesBloc() {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        // Traiter les données de la réponse ici
+        setSelectedFeature(data)
         console.log(data);
       })
       .catch((error) => {
@@ -85,32 +90,61 @@ function FeaturesBloc() {
         console.error(error);
       });
   };
+  // gestion Pop Up
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
+  const openModal = () => {
+      setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
   return (
-    <section className="features_Bloc">
-      <h2 className="features_Bloc_title">FEATURES</h2>
-      {/* Affichez les features ici */}
-      {featuresByLevel
-        .filter(([level]) => level <= playerLevel) // Filtrer les features en fonction du niveau du personnage
-        .map(([level, features]) => (
-          <React.Fragment key={level}>
-            <section className="features_list_level_bloc">
-              <h3 className="features_list_title">Level {level}:</h3>
-              <ul className="features_list">
-                {features.map((feature) => (
-                  <li
-                    key={feature.index}
-                    className="features_item"
-                    onClick={() => onFeaturingChoice(feature)}
-                  >
-                    {feature.name}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          </React.Fragment>
-        ))}
-    </section>
+    <>
+      <section className="features_Bloc">
+        <h2 className="features_Bloc_title">FEATURES</h2>
+        {/* Affichez les features ici */}
+        {featuresByLevel
+          .filter(([level]) => level <= playerLevel) // Filtrer les features en fonction du niveau du personnage
+          .map(([level, features]) => (
+            <React.Fragment key={level}>
+              <section className="features_list_level_bloc">
+                <h3 className="features_list_title">Level {level}:</h3>
+                <ul className="features_list">
+                  {features.map((feature) => (
+                    <li
+                      key={feature.index}
+                      className="features_item"
+                      onClick={() => {
+                        onFeaturingChoice(feature);
+                        openModal();
+                      }}
+                    >
+                      {feature.name}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            </React.Fragment>
+          ))}
+      </section>
+      {modalIsOpen ? (
+        <Modal open={modalIsOpen} onClose={closeModal} className="spell_popup">
+          <Box>
+            <div className="closed_cross">
+              <img
+                className="sword_cross"
+                src={SwordCross}
+                alt="close"
+                onClick={closeModal}
+              />
+            </div>
+            <FeaturesPopUp selectFeature = {selectedFeature}/>
+          </Box>
+        </Modal>
+      ) : null}
+    </>
   );
 }
 
