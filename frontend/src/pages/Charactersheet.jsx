@@ -6,6 +6,7 @@ import CharacterInfo from "../components/Characterinfo/CharacterInfo";
 import Combat from "../components/Combat/Combat";
 import HealthDice from "../components/Combat/HealthDice";
 import CaracBloc from "../components/CaracBloc/CaracBloc";
+import RaceTraitsBloc from "../components/RaceTraitsBloc/RaceTraitsBloc";
 import FeaturesBloc from "../components/FeaturesBloc/FeaturesBloc";
 import SpellBloc from "../components/SpellBloc/SpellBloc";
 import EquipmentBloc from "../components/EquipmentBloc/EquipmentBloc";
@@ -16,7 +17,7 @@ import { CharacterProvider } from "../context/CharacterContext";
 import useCharacter from "../context/CharacterContext";
 
 function CharacterSheet() {
-  const { playerClass, playerLevel } = useCharacter();
+  const { playerClass, playerLevel, playerRace } = useCharacter();
 
   return (
     <div>
@@ -41,7 +42,8 @@ function CharacterSheet() {
           <div id="DesktopLeftColumn">
             <BonusPerceptionBloc />
             <CaracBloc />
-            <FeaturesBloc/>
+            {playerRace && playerRace !== "Human" && <RaceTraitsBloc/>}
+            {playerClass &&  playerLevel && <FeaturesBloc/>}
             {(playerClass === "bard" ||
               playerClass === "cleric" ||
               playerClass === "druid" ||

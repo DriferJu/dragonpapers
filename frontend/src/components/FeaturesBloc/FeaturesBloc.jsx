@@ -82,7 +82,7 @@ function FeaturesBloc() {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        setSelectedFeature(data)
+        setSelectedFeatures(data)
         console.log(data);
       })
       .catch((error) => {
