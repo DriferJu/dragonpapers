@@ -6,16 +6,21 @@ import CharacterInfo from "../components/Characterinfo/CharacterInfo";
 import Combat from "../components/Combat/Combat";
 import HealthDice from "../components/Combat/HealthDice";
 import CaracBloc from "../components/CaracBloc/CaracBloc";
+import RaceTraitsBloc from "../components/RaceTraitsBloc/RaceTraitsBloc";
+import FeaturesBloc from "../components/FeaturesBloc/FeaturesBloc";
 import SpellBloc from "../components/SpellBloc/SpellBloc";
 import EquipmentBloc from "../components/EquipmentBloc/EquipmentBloc";
 import BonusPerceptionBloc from "../components/BonusPerceptionBloc/BonusPerceptionBloc";
 import AttackNinc from "../components/Attacks&Inc/AttackNinc";
 import SnakeDragon from "../assets/dnd_ico/snake-dragon.png";
 import { CharacterProvider } from "../context/CharacterContext";
+import useCharacter from "../context/CharacterContext";
 
 function CharacterSheet() {
+  const { playerClass, playerLevel, playerRace } = useCharacter();
+
   return (
-    <CharacterProvider>
+    <div>
       <div className="result Sheet_smartphone" id="CHARACTERS_SHEET">
         <CharacterInfo />
         <BonusPerceptionBloc />
@@ -37,7 +42,17 @@ function CharacterSheet() {
           <div id="DesktopLeftColumn">
             <BonusPerceptionBloc />
             <CaracBloc />
-            <SpellBloc />
+            {playerRace && playerRace !== "Human" && <RaceTraitsBloc/>}
+            {playerClass &&  playerLevel && <FeaturesBloc/>}
+            {(playerClass === "bard" ||
+              playerClass === "cleric" ||
+              playerClass === "druid" ||
+              playerClass === "paladin" ||
+              playerClass === "ranger" ||
+              playerClass === "sorcerer" ||
+              playerClass === "warlock" ||
+              playerClass === "wizard") && playerLevel && <SpellBloc />}
+
             <div className="PositionSnakeDragon">
               <img src={SnakeDragon} alt="snake dragon" id="snakeDragon" />
             </div>
@@ -50,8 +65,14 @@ function CharacterSheet() {
           </div>
         </div>
       </div>
-    </CharacterProvider>
+    </div>
   );
 }
 
-export default CharacterSheet;
+export default function WrappedCharacterSheet() {
+  return (
+    <CharacterProvider>
+      <CharacterSheet />
+    </CharacterProvider>
+  );
+}
